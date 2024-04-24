@@ -1,0 +1,17 @@
+{
+  "name": "adventure-frontend",
+  "version": "1.0.0",
+  "description": "Rebuilding adventure-main to be open-source. Built trying out TDD Copilot and MUI styling lib. Goes with adventure-backend which is yet to be made public.",
+  "main": "index.js",
+  "scripts": {
+    "start": "echo \"Error: no start specified\" && exit 1",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/Slayare/adventure-frontend/issues"
+  },
+  "homepage": "https://github.com/Slayare/adventure-frontend",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
