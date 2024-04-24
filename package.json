@@ -4,8 +4,10 @@
   "description": "Rebuilding adventure-main to be open-source. Built trying out TDD Copilot and MUI styling lib. Goes with adventure-backend which is yet to be made public.",
   "main": "index.js",
   "scripts": {
-    "start": "echo \"Error: no start specified\" && exit 1",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "webpack serve --open",
+    "test": "jest",
+    "lint": "eslint .",
+    "build": "webpack --mode production"
   },
   "bugs": {
     "url": "https://github.com/Slayare/adventure-frontend/issues"
@@ -13,5 +15,44 @@
   "homepage": "https://github.com/Slayare/adventure-frontend",
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
+    "@fontsource/inter": "^5.0.18",
+    "@mui/joy": "^5.0.0-beta.36",
+    "jest": "^29.5.0",
+    "jest-resolve": "^27.4.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.24.4",
+    "@babel/preset-env": "^7.24.4",
+    "@babel/preset-react": "^7.24.1",
+    "@eslint/js": "^9.1.1",
+    "@pmmmwh/react-refresh-webpack-plugin": "^0.5.11",
+    "@testing-library/jest-dom": "^6.4.2",
+    "@testing-library/react": "^15.0.4",
+    "@types/jest": "^29.5.12",
+    "@types/react": "^18.2.79",
+    "@types/react-dom": "^18.2.25",
+    "@typescript-eslint/parser": "^7.7.1",
+    "babel-loader": "^9.1.3",
+    "eslint": "^8.57.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-react": "^7.34.1",
+    "globals": "^15.0.0",
+    "html-webpack-plugin": "^5.6.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "react-refresh": "^0.14.0",
+    "react-refresh-webpack-plugin": "^0.1.0",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.4.5",
+    "typescript-eslint": "^7.7.1",
+    "webpack": "^5.91.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.2",
+    "webpack-hot-middleware": "^2.26.1"
+  }
 }
