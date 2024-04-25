@@ -6,10 +6,9 @@ import Link from "@mui/joy/Link";
 import Sheet from "@mui/joy/Sheet";
 import { CssVarsProvider } from "@mui/joy/styles";
 import Typography from "@mui/joy/Typography";
+import React from "react";
 
 import { DarkModeToggle } from "@/utils/DarkModeToggle";
-
-import React from "react";
 
 const App = () => {
   return (
