@@ -3,11 +3,11 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import { HomePage } from "@/pages/HomePage";
 import { SignIn } from "@/pages/SignIn";
-import { DarkModeToggle } from "@/ui/DarkModeToggle";
+import { ColorSchemeToggle } from "@/ui/ColorSchemeToggle";
 
 const Routes = () => (
   <CssVarsProvider>
-    <DarkModeToggle />
+    <ColorSchemeToggle />
     <Router>
       <Switch>
         <Route exact path="/" component={HomePage} />
