@@ -1,12 +1,13 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
 
 import Routes from "./Routes";
 
-// eslint-disable-next-line react/no-deprecated
-ReactDOM.render(
+const container = document.getElementById("root");
+const root = ReactDOM.createRoot(container!);
+
+root.render(
   <React.StrictMode>
     <Routes />
-  </React.StrictMode>,
-  document.getElementById("root")
+  </React.StrictMode>
 );

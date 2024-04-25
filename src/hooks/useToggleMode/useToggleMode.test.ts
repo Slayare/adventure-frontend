@@ -1,5 +1,5 @@
 import { useColorScheme } from "@mui/joy/styles";
-import { renderHook, act } from "@testing-library/react-hooks";
+import { renderHook, act } from "@testing-library/react";
 
 import useToggleMode from "./useToggleMode";
 
