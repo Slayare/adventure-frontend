@@ -6,11 +6,9 @@ describe("HomePage", () => {
   it("should render homepage with message", () => {
     render(<HomePage />);
     const heading = screen.getByRole("heading", {
-      name: /Welcome to the home page!/i,
+      name: /Some generic title/i,
     });
-    const content = screen.getByText(
-      /This is the home page of the application./i
-    );
+    const content = screen.getByText(/Some witty quote about the experience/i);
     expect(heading).toBeInTheDocument();
     expect(content).toBeInTheDocument();
   });
