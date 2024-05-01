@@ -6,6 +6,9 @@
   "scripts": {
     "start": "webpack serve --open",
     "test": "jest",
+    "test:coverage": "jest --coverage",
+    "test:watch": "jest --watch",
+    "test:clean": "jest --clear-cache && jest",
     "lint": "eslint .",
     "build": "webpack --mode production"
   },

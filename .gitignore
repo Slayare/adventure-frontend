@@ -26,3 +26,6 @@ package-lock.json
 
 # tree output
 output.txt
+
+# test coverage
+coverage/
