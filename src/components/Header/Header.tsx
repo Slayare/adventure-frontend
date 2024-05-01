@@ -4,6 +4,7 @@ import Typography from "@mui/joy/Typography";
 import { Link as RouterLink } from "react-router-dom";
 
 import { Navigation } from "@/components/Navigation";
+import { ColorSchemeToggle } from "@/ui/ColorSchemeToggle";
 
 const Header = () => (
   //  TODO: Use navigation component across all pages through a shared layout.
@@ -31,6 +32,7 @@ const Header = () => (
       <Typography level="h4" sx={{ fontWeight: "bold", mr: 2 }}>
         Some generic title
       </Typography>
+      <ColorSchemeToggle />
     </Box>
     <Navigation />
   </Sheet>

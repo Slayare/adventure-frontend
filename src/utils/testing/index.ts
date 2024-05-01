@@ -1,1 +1,1 @@
-export { render, screen } from "./renderWithRouter";
+export { render, screen } from "./renderWithTestProperties";
