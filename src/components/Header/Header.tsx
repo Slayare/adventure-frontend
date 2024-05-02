@@ -7,7 +7,6 @@ import { Navigation } from "@/components/Navigation";
 import { ColorSchemeToggle } from "@/ui/ColorSchemeToggle";
 
 const Header = () => (
-  //  TODO: Use navigation component across all pages through a shared layout.
   <Sheet
     component="header"
     sx={{
@@ -19,19 +18,21 @@ const Header = () => (
     }}
     variant="outlined"
   >
-    <Box
-      component={RouterLink}
-      to="/"
-      sx={{
-        display: "flex",
-        alignItems: "center",
-        textDecoration: "none",
-        color: "inherit",
-      }}
-    >
-      <Typography level="h4" sx={{ fontWeight: "bold", mr: 2 }}>
-        Some generic title
-      </Typography>
+    <Box sx={{ display: "flex" }}>
+      <Box
+        component={RouterLink}
+        to="/"
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          textDecoration: "none",
+          color: "inherit",
+        }}
+      >
+        <Typography level="h4" sx={{ fontWeight: "bold", mr: 2 }}>
+          Some generic title
+        </Typography>
+      </Box>
       <ColorSchemeToggle />
     </Box>
     <Navigation />
