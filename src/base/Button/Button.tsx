@@ -1,10 +1,6 @@
-import {
-  Button as MuiButton,
-  ButtonProps as MuiButtonProps,
-  styled,
-} from "@mui/joy";
+import { Button as MuiButton, styled } from "@mui/joy";
 
-interface ButtonProps extends MuiButtonProps {}
+import { ButtonProps } from "@/types";
 
 // TODO: Add breakpoints
 const StyledButton = styled(MuiButton)(({ theme }) => ({

@@ -1,4 +1,4 @@
-import { TypographyProps } from "@mui/joy";
+import { TypographyProps, ButtonProps as MuiButtonProps } from "@mui/joy";
 
 export enum FontType {
   HEADING = "HEADING",
@@ -8,3 +8,5 @@ export enum FontType {
 export interface TextProps extends TypographyProps {
   type?: FontType;
 }
+
+export interface ButtonProps extends MuiButtonProps {}
