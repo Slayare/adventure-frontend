@@ -1,9 +1,9 @@
-import { Stack, Link } from "@mui/joy";
-import { Link as RouterLink } from "react-router-dom";
+import { Stack } from "@mui/joy";
 
 import { BodyText } from "@/base/Text/";
 import { Container } from "@/base/Container/";
 import { SecondaryButton } from "@/base/Button";
+import { Link } from "@/components/Link";
 
 const Footer = () => {
   return (
@@ -26,18 +26,10 @@ const Footer = () => {
           © {new Date().getFullYear()} My App. All rights reserved.
         </BodyText>
         <Stack direction="row" gap={2}>
-          <Link
-            sx={{ ":hover": { textDecorationLine: "unset" } }}
-            component={RouterLink}
-            to="/privacy-policy"
-          >
+          <Link destination="privacy-policy">
             <SecondaryButton>Privacy policy</SecondaryButton>
           </Link>
-          <Link
-            sx={{ ":hover": { textDecorationLine: "unset" } }}
-            component={RouterLink}
-            to="/terms-of-service"
-          >
+          <Link destination="terms-of-service">
             <SecondaryButton>Terms of Service</SecondaryButton>
           </Link>
         </Stack>
