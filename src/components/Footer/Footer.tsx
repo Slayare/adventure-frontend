@@ -18,17 +18,27 @@ const Footer = () => {
         borderRadius: "sm",
         boxShadow: "md",
       }}
-      variant="outlined"
+      variant="soft"
     >
       <Stack direction="row" alignItems="center" justifyContent="space-between">
         <BodyText>
           © {new Date().getFullYear()} My App. All rights reserved.
         </BodyText>
         <Stack direction="row" gap={2}>
-          <Button component={Link} to="/privacy-policy">
+          <Button
+            component={Link}
+            color="neutral"
+            variant="solid"
+            to="/privacy-policy"
+          >
             Privacy Policy
           </Button>
-          <Button component={Link} to="/terms-of-service">
+          <Button
+            component={Link}
+            color="neutral"
+            variant="solid"
+            to="/terms-of-service"
+          >
             Terms of Service
           </Button>
         </Stack>

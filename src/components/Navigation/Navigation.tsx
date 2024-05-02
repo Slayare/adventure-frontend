@@ -4,13 +4,7 @@ import { Link as RouterLink } from "react-router-dom";
 
 const Navigation = () => (
   <Box sx={{ display: "flex", alignItems: "center" }}>
-    <Button
-      component={RouterLink}
-      to="/about"
-      color="neutral"
-      sx={{ mx: 1 }}
-      variant="plain"
-    >
+    <Button component={RouterLink} to="/about" color="primary" sx={{ mx: 1 }}>
       About
     </Button>
     <Button component={RouterLink} to="/sign-in" color="primary" sx={{ mx: 1 }}>

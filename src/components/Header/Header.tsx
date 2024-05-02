@@ -16,7 +16,7 @@ const Header = () => (
       p: 2,
       boxShadow: "md",
     }}
-    variant="outlined"
+    variant="soft"
   >
     <Box sx={{ display: "flex" }}>
       <Box
