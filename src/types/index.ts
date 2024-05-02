@@ -6,6 +6,5 @@ export enum FontType {
 }
 
 export interface TextProps extends TypographyProps {
-  children: React.ReactNode;
   type?: FontType;
 }
