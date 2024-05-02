@@ -19,7 +19,11 @@ const StyledText = styled(Text)(({ theme }) => ({
 }));
 
 const BodyText = ({ children, ...props }: TextProps) => {
-  return <StyledText {...props}>{children}</StyledText>;
+  return (
+    <StyledText level="body-md" {...props}>
+      {children}
+    </StyledText>
+  );
 };
 
 export default BodyText;
