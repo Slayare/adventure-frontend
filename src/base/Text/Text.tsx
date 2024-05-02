@@ -1,8 +1,8 @@
 import { styled } from "@mui/joy/styles";
 import Typography from "@mui/joy/Typography";
-import * as React from "react";
 
 import { FONT_SIZES } from "@/constants";
+import { TextProps } from "@/types";
 
 const StyledText = styled(Typography)(({ theme }) => ({
   [theme.breakpoints.down("mobile")]: {
@@ -16,8 +16,8 @@ const StyledText = styled(Typography)(({ theme }) => ({
   },
 }));
 
-const Text = ({ children }: { children: React.ReactNode }) => {
-  return <StyledText>{children}</StyledText>;
+const Text = ({ children, ...props }: TextProps) => {
+  return <StyledText {...props}>{children}</StyledText>;
 };
 
 export default Text;
