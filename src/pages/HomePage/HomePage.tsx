@@ -1,12 +1,10 @@
 import Sheet from "@mui/joy/Sheet";
 import Typography from "@mui/joy/Typography";
 
-import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
+import { Layout } from "@/components/Layout";
 
 const HomePage = () => (
-  <>
-    <Header />
+  <Layout>
     <Sheet
       sx={{
         mx: "auto",
@@ -32,8 +30,7 @@ const HomePage = () => (
         relational DB will provide a user save state through a login.
       </Typography>
     </Sheet>
-    <Footer />
-  </>
+  </Layout>
 );
 
 export default HomePage;
