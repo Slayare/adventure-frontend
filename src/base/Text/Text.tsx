@@ -1,13 +1,8 @@
-import { styled, Typography, TypographyProps } from "@mui/joy";
+import { styled, Typography } from "@mui/joy";
 import React from "react";
 
 import { FONT_SIZES } from "@/constants";
-import { FontType } from "@/types";
-
-interface TextProps extends TypographyProps {
-  children: React.ReactNode;
-  type?: FontType;
-}
+import { FontType, TextProps } from "@/types";
 
 const StyledText = styled(Typography)<TextProps>(
   ({ theme, type = FontType.BODY }) => ({

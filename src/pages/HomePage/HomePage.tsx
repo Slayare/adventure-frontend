@@ -1,9 +1,8 @@
 import Sheet from "@mui/joy/Sheet";
 import Typography from "@mui/joy/Typography";
 
+import { BodyText } from "@/base/Text";
 import { Layout } from "@/components/Layout";
-import { Text } from "@/base/Text";
-import { FontType } from "@/types";
 
 const HomePage = () => (
   <Layout>
@@ -25,12 +24,12 @@ const HomePage = () => (
       <Typography level="h4" component="h2">
         Some witty quote about the experience
       </Typography>
-      <Text type={FontType.BODY}>
+      <BodyText>
         I aim to create a web-based text-adventure game using ChatGPT, its
         assistants API and a regular relational DB. The assistants API will
         assist with storing and tracking information in the vector DB, and my
         relational DB will provide a user save state through a login.
-      </Text>
+      </BodyText>
     </Sheet>
   </Layout>
 );

@@ -8,8 +8,7 @@ import Sheet from "@mui/joy/Sheet";
 import Typography from "@mui/joy/Typography";
 import React from "react";
 
-import { Text } from "@/base/Text";
-import { FontType } from "@/types";
+import { BodyText } from "@/base/Text";
 
 const SignIn = () => (
   <Layout>
@@ -31,7 +30,7 @@ const SignIn = () => (
       <Typography level="h4" component="h1">
         Hello world!
       </Typography>
-      <Text type={FontType.BODY}>Sign in to continue.</Text>
+      <BodyText>Sign in to continue.</BodyText>
       <FormControl>
         <FormLabel>Email</FormLabel>
         <Input name="email" type="email" placeholder="Enter your email..." />
