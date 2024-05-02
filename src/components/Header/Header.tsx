@@ -1,13 +1,13 @@
 import Box from "@mui/joy/Box";
-import Sheet from "@mui/joy/Sheet";
 import { Link as RouterLink } from "react-router-dom";
 
+import { Container } from "@/base/Container";
 import { SubHeading } from "@/base/Text";
 import { Navigation } from "@/components/Navigation";
 import { ColorSchemeToggle } from "@/ui/ColorSchemeToggle";
 
 const Header = () => (
-  <Sheet
+  <Container
     component="header"
     sx={{
       display: "flex",
@@ -36,7 +36,7 @@ const Header = () => (
       <ColorSchemeToggle />
     </Box>
     <Navigation />
-  </Sheet>
+  </Container>
 );
 
 export default Header;

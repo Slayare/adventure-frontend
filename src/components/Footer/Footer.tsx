@@ -1,11 +1,12 @@
-import { Sheet, Stack, Button } from "@mui/joy";
+import { Stack, Button } from "@mui/joy";
 import { Link } from "react-router-dom";
 
 import { BodyText } from "@/base/Text/";
+import { Container } from "@/base/Container/";
 
 const Footer = () => {
   return (
-    <Sheet
+    <Container
       component="footer"
       sx={{
         mt: 8,
@@ -32,7 +33,7 @@ const Footer = () => {
           </Button>
         </Stack>
       </Stack>
-    </Sheet>
+    </Container>
   );
 };
 

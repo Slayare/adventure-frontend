@@ -4,14 +4,14 @@ import FormControl from "@mui/joy/FormControl";
 import FormLabel from "@mui/joy/FormLabel";
 import Input from "@mui/joy/Input";
 import Link from "@mui/joy/Link";
-import Sheet from "@mui/joy/Sheet";
 import React from "react";
 
 import { BodyText, SubHeading } from "@/base/Text";
+import { Container } from "@/base/Container";
 
 const SignIn = () => (
   <Layout>
-    <Sheet
+    <Container
       sx={{
         width: 300,
         mx: "auto",
@@ -48,7 +48,7 @@ const SignIn = () => (
       >
         Don't have an account?
       </BodyText>
-    </Sheet>
+    </Container>
   </Layout>
 );
 

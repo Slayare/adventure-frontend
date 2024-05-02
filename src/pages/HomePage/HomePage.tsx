@@ -1,11 +1,10 @@
-import Sheet from "@mui/joy/Sheet";
-
 import { BodyText, SubHeading } from "@/base/Text";
+import { Container } from "@/base/Container";
 import { Layout } from "@/components/Layout";
 
 const HomePage = () => (
   <Layout>
-    <Sheet
+    <Container
       sx={{
         mx: "auto",
         my: 4,
@@ -29,7 +28,7 @@ const HomePage = () => (
         assist with storing and tracking information in the vector DB, and my
         relational DB will provide a user save state through a login.
       </BodyText>
-    </Sheet>
+    </Container>
   </Layout>
 );
 

@@ -1,7 +1,7 @@
-import { Sheet, styled } from "@mui/joy";
+import { Sheet, SheetProps, styled } from "@mui/joy";
 import React from "react";
 
-interface ContainerProps {
+interface ContainerProps extends SheetProps {
   children: React.ReactNode;
 }
 

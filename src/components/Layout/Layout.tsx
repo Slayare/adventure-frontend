@@ -1,4 +1,5 @@
-import { Sheet } from "@mui/joy";
+import { Container } from "@/base/Container";
+
 import { Header } from "../Header";
 import { Footer } from "../Footer";
 
@@ -8,11 +9,11 @@ interface LayoutProps {
 
 const Layout = ({ children }: LayoutProps) => {
   return (
-    <Sheet>
+    <Container>
       <Header />
       {children}
       <Footer />
-    </Sheet>
+    </Container>
   );
 };
 
