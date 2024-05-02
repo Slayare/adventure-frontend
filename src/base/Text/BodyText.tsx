@@ -1,25 +1,25 @@
+import { styled } from "@mui/joy";
 import React from "react";
 
+import { FONT_SIZES } from "@/constants";
 import { TextProps } from "@/types";
 
 import Text from "./Text";
 
-interface BodyTextProps extends TextProps {
-  sx?: object;
-}
+const StyledText = styled(Text)(({ theme }) => ({
+  [theme.breakpoints.down("mobile")]: {
+    fontSize: FONT_SIZES.XS,
+  },
+  [theme.breakpoints.between("mobile", "tablet")]: {
+    fontSize: FONT_SIZES.SM,
+  },
+  [theme.breakpoints.up("tablet")]: {
+    fontSize: FONT_SIZES.MD,
+  },
+}));
 
-const BodyText = ({ children, sx, ...props }: BodyTextProps) => {
-  return (
-    <Text
-      {...props}
-      sx={{
-        fontSize: "body-sm !important",
-        ...sx,
-      }}
-    >
-      {children}
-    </Text>
-  );
+const BodyText = ({ children, ...props }: TextProps) => {
+  return <StyledText {...props}>{children}</StyledText>;
 };
 
 export default BodyText;
