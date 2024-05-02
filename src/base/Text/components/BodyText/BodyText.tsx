@@ -1,6 +1,6 @@
 import { FontType, TextProps } from "@/types";
 
-import Text from "./Text";
+import Text from "../../Text";
 
 const BodyText = ({ children, ...props }: TextProps) => {
   return (
