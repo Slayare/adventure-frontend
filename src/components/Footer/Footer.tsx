@@ -1,7 +1,8 @@
 import { Sheet, Stack, Button } from "@mui/joy";
 import { Link } from "react-router-dom";
 
-import { BodyText } from "@/base/Text";
+import { Text } from "@/base/Text";
+import { FontType } from "@/types";
 
 const Footer = () => {
   return (
@@ -20,9 +21,9 @@ const Footer = () => {
       variant="outlined"
     >
       <Stack direction="row" alignItems="center" justifyContent="space-between">
-        <BodyText>
+        <Text type={FontType.BODY}>
           © {new Date().getFullYear()} My App. All rights reserved.
-        </BodyText>
+        </Text>
         <Stack direction="row" gap={2}>
           <Button component={Link} to="/privacy-policy">
             Privacy Policy
