@@ -1,5 +1,7 @@
-import { Sheet, Stack, Typography, Button } from "@mui/joy";
+import { Sheet, Stack, Button } from "@mui/joy";
 import { Link } from "react-router-dom";
+
+import { Text } from "@/base/Text";
 
 const Footer = () => {
   return (
@@ -18,9 +20,7 @@ const Footer = () => {
       variant="outlined"
     >
       <Stack direction="row" alignItems="center" justifyContent="space-between">
-        <Typography level="body-md">
-          © {new Date().getFullYear()} My App. All rights reserved.
-        </Typography>
+        <Text>© {new Date().getFullYear()} My App. All rights reserved.</Text>
         <Stack direction="row" gap={2}>
           <Button component={Link} to="/privacy-policy">
             Privacy Policy
