@@ -1,8 +1,8 @@
 import Box from "@mui/joy/Box";
 import Sheet from "@mui/joy/Sheet";
-import Typography from "@mui/joy/Typography";
 import { Link as RouterLink } from "react-router-dom";
 
+import { SubHeading } from "@/base/Text";
 import { Navigation } from "@/components/Navigation";
 import { ColorSchemeToggle } from "@/ui/ColorSchemeToggle";
 
@@ -29,9 +29,9 @@ const Header = () => (
           color: "inherit",
         }}
       >
-        <Typography level="h4" sx={{ fontWeight: "bold", mr: 2 }}>
+        <SubHeading sx={{ fontWeight: "bold", mr: 2 }}>
           Some generic title
-        </Typography>
+        </SubHeading>
       </Box>
       <ColorSchemeToggle />
     </Box>

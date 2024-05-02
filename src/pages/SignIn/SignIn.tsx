@@ -5,10 +5,9 @@ import FormLabel from "@mui/joy/FormLabel";
 import Input from "@mui/joy/Input";
 import Link from "@mui/joy/Link";
 import Sheet from "@mui/joy/Sheet";
-import Typography from "@mui/joy/Typography";
 import React from "react";
 
-import { BodyText } from "@/base/Text";
+import { BodyText, SubHeading } from "@/base/Text";
 
 const SignIn = () => (
   <Layout>
@@ -27,9 +26,7 @@ const SignIn = () => (
       }}
       variant="soft"
     >
-      <Typography level="h4" component="h1">
-        Hello world!
-      </Typography>
+      <SubHeading component="h1">Hello world!</SubHeading>
       <BodyText>Sign in to continue.</BodyText>
       <FormControl>
         <FormLabel>Email</FormLabel>
@@ -44,13 +41,13 @@ const SignIn = () => (
         />
       </FormControl>
       <Button sx={{ mt: 1 }}>Log in</Button>
-      <Typography
+      <BodyText
         endDecorator={<Link href="/sign-up">Sign up</Link>}
         fontSize="sm"
         sx={{ alignSelf: "center" }}
       >
         Don't have an account?
-      </Typography>
+      </BodyText>
     </Sheet>
   </Layout>
 );
