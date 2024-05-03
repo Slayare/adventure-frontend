@@ -1,6 +1,18 @@
-import { BodyText, SubHeading } from "@/base/Text";
+import { Divider } from "@mui/joy";
+
+import { Flex } from "@/base/Container";
+import { List } from "@/base/List";
+import { BodyText, MinorHeading, SubHeading } from "@/base/Text";
 import { Wrapper } from "@/base/Wrapper";
 import { Layout } from "@/components/Layout";
+
+const HomePageFlex = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <Flex flexDirection="column" gap={1}>
+      {children}
+    </Flex>
+  );
+};
 
 const HomePage = () => (
   <Layout>
@@ -19,15 +31,36 @@ const HomePage = () => (
       }}
       variant="soft"
     >
-      <SubHeading component="h2">
-        Some witty quote about the experience
+      <SubHeading component="h2" alignSelf="center">
+        The game that writes itself, directed by you
       </SubHeading>
-      <BodyText>
-        I aim to create a web-based text-adventure game using ChatGPT, its
-        assistants API and a regular relational DB. The assistants API will
-        assist with storing and tracking information in the vector DB, and my
-        relational DB will provide a user save state through a login.
-      </BodyText>
+      <Divider />
+      <HomePageFlex>
+        <MinorHeading component="h3">About</MinorHeading>
+        <BodyText>
+          I aim to create a web-based text-adventure game using ChatGPT, its
+          assistants API and a regular relational DB. The assistants API will
+          assist with storing and tracking information in the vector DB, and my
+          relational DB will provide a user save state through a login.
+        </BodyText>
+      </HomePageFlex>
+      <Divider />
+      <HomePageFlex>
+        <MinorHeading component="h3">Features</MinorHeading>
+        <List
+          marker="disc"
+          items={[
+            "Dynamic role-playing system",
+            "Customisable story integration",
+            "Adaptive engine",
+          ]}
+        />
+      </HomePageFlex>
+      <Divider />
+      <HomePageFlex>
+        <MinorHeading component="h3">Roadmap</MinorHeading>
+        <BodyText>To be completed!</BodyText>
+      </HomePageFlex>
     </Wrapper>
   </Layout>
 );

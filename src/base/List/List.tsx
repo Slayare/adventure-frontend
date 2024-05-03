@@ -26,7 +26,9 @@ const List = ({ items, ...props }: ListProps) => {
   return (
     <StyledList {...props}>
       {items.map((item, index) => (
-        <ListItem key={index}>{item}</ListItem>
+        <ListItem sx={{ padding: 0 }} key={index}>
+          {item}
+        </ListItem>
       ))}
     </StyledList>
   );
