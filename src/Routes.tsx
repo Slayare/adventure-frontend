@@ -5,15 +5,19 @@ import { HomePage } from "@/pages/HomePage";
 import { SignIn } from "@/pages/SignIn";
 
 import theme from "./theme";
+import { CssBaseline, ScopedCssBaseline } from "@mui/joy";
 
 const Routes = () => (
   <CssVarsProvider theme={theme}>
-    <Router>
-      <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route path="/sign-in" component={SignIn} />
-      </Switch>
-    </Router>
+    <CssBaseline />
+    <ScopedCssBaseline>
+      <Router>
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+          <Route path="/sign-in" component={SignIn} />
+        </Switch>
+      </Router>
+    </ScopedCssBaseline>
   </CssVarsProvider>
 );
 
