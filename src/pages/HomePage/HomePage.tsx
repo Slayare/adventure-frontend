@@ -1,10 +1,10 @@
 import { BodyText, SubHeading } from "@/base/Text";
-import { Container } from "@/base/Container";
+import { Wrapper } from "@/base/Wrapper";
 import { Layout } from "@/components/Layout";
 
 const HomePage = () => (
   <Layout>
-    <Container
+    <Wrapper
       sx={{
         mx: "auto",
         my: 4,
@@ -28,7 +28,7 @@ const HomePage = () => (
         assist with storing and tracking information in the vector DB, and my
         relational DB will provide a user save state through a login.
       </BodyText>
-    </Container>
+    </Wrapper>
   </Layout>
 );
 

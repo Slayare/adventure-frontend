@@ -1,9 +1,7 @@
 import { Sheet, SheetProps, styled } from "@mui/joy";
 import React from "react";
 
-interface ContainerProps extends SheetProps {
-  children: React.ReactNode;
-}
+interface WrapperProps extends SheetProps {}
 
 // TODO: Add breakpoints
 const StyledSheet = styled(Sheet)(({ theme }) => ({
@@ -18,8 +16,8 @@ const StyledSheet = styled(Sheet)(({ theme }) => ({
   },
 }));
 
-const Container = ({ children, ...props }: ContainerProps) => {
+const Wrapper = ({ children, ...props }: WrapperProps) => {
   return <StyledSheet {...props}>{children}</StyledSheet>;
 };
 
-export default Container;
+export default Wrapper;

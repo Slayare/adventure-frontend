@@ -1,13 +1,13 @@
 import { Stack } from "@mui/joy";
 
-import { BodyText } from "@/base/Text/";
-import { Container } from "@/base/Container/";
+import { BodyText } from "@/base/Text";
+import { Wrapper } from "@/base/Wrapper";
 import { SecondaryButton } from "@/base/Button";
 import { Link } from "@/components/Link";
 
 const Footer = () => {
   return (
-    <Container
+    <Wrapper
       component="footer"
       sx={{
         mt: 8,
@@ -34,7 +34,7 @@ const Footer = () => {
           </Link>
         </Stack>
       </Stack>
-    </Container>
+    </Wrapper>
   );
 };
 

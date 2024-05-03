@@ -1,4 +1,4 @@
-import { Container } from "@/base/Container";
+import { Wrapper } from "@/base/Wrapper";
 
 import { Header } from "../Header";
 import { Footer } from "../Footer";
@@ -9,11 +9,11 @@ interface LayoutProps {
 
 const Layout = ({ children }: LayoutProps) => {
   return (
-    <Container>
+    <Wrapper>
       <Header />
       {children}
       <Footer />
-    </Container>
+    </Wrapper>
   );
 };
 

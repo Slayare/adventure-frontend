@@ -7,11 +7,11 @@ import Link from "@mui/joy/Link";
 import React from "react";
 
 import { BodyText, SubHeading } from "@/base/Text";
-import { Container } from "@/base/Container";
+import { Wrapper } from "@/base/Wrapper";
 
 const SignIn = () => (
   <Layout>
-    <Container
+    <Wrapper
       sx={{
         width: 300,
         mx: "auto",
@@ -48,7 +48,7 @@ const SignIn = () => (
       >
         Don't have an account?
       </BodyText>
-    </Container>
+    </Wrapper>
   </Layout>
 );
 
