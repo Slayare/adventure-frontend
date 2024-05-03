@@ -31,6 +31,10 @@ module.exports = {
         ],
         exclude: /node_modules/,
       },
+      {
+        test: /\.(png|jpe?g|gif|webp)$/i,
+        type: "asset/resource",
+      },
     ],
   },
   plugins: [
