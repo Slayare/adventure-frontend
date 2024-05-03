@@ -1,6 +1,6 @@
-import { Box, BoxProps, styled } from "@mui/joy";
+import { Box, styled } from "@mui/joy";
 
-interface ContainerProps extends BoxProps {}
+import { ContainerProps } from "@/types";
 
 // TODO: Add breakpoints
 const StyledBox = styled(Box)(({ theme }) => ({
