@@ -10,7 +10,6 @@ const Footer = () => {
     <Wrapper
       component="footer"
       sx={{
-        mt: 8,
         py: 2,
         px: 2,
         display: "flex",
