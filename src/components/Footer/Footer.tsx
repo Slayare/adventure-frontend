@@ -17,6 +17,7 @@ const Footer = () => {
         gap: 2,
         borderRadius: "sm",
         boxShadow: "md",
+        marginTop: "auto",
       }}
       variant="soft"
     >
