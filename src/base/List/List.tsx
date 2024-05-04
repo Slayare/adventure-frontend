@@ -6,31 +6,33 @@ import {
 } from "@mui/joy";
 import React from "react";
 
+import { FONT_SIZES } from "@/constants";
+
 interface ListProps extends MuiListProps {
   items: any[];
 }
 
-const StyledList = styled(MuiList)(({ theme }) => ({
+const StyledListItem = styled(ListItem)(({ theme }) => ({
   [theme.breakpoints.down("mobile")]: {
-    // do something
+    fontSize: FONT_SIZES.BODY.XS,
   },
   [theme.breakpoints.between("mobile", "tablet")]: {
-    // do something
+    fontSize: FONT_SIZES.BODY.SM,
   },
   [theme.breakpoints.up("tablet")]: {
-    // do something
+    fontSize: FONT_SIZES.BODY.MD,
   },
 }));
 
 const List = ({ items, ...props }: ListProps) => {
   return (
-    <StyledList {...props}>
+    <MuiList {...props}>
       {items.map((item, index) => (
-        <ListItem sx={{ padding: 0 }} key={index}>
+        <StyledListItem sx={{ padding: 0 }} key={index}>
           {item}
-        </ListItem>
+        </StyledListItem>
       ))}
-    </StyledList>
+    </MuiList>
   );
 };
 
