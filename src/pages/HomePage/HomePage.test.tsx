@@ -5,11 +5,7 @@ import HomePage from "./HomePage";
 describe("HomePage", () => {
   it("should render homepage with message", () => {
     render(<HomePage />);
-    const heading = screen.getByText("Some generic title");
-    const content = screen.getByText(
-      "The game that writes itself, directed by you"
-    );
-    expect(heading).toBeInTheDocument();
-    expect(content).toBeInTheDocument();
+    expect(screen.getByText("Some generic title")).toBeInTheDocument();
+    expect(screen.getByText("The game that writes itself")).toBeInTheDocument();
   });
 });

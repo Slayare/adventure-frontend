@@ -32,7 +32,7 @@ const HomePage = () => (
       variant="soft"
     >
       <SubHeading component="h2" alignSelf="center">
-        The game that writes itself, directed by you
+        The game that writes itself
       </SubHeading>
       <Divider />
       <HomePageFlex>
