@@ -1,17 +1,59 @@
 version: 2.1
 
-jobs:
-  say-hello:
-    docker:
-      - image: cimg/base:current
+orbs:
+  aws-cli: circleci/aws-cli@4.0
+  aws-ecs: circleci/aws-ecs@4.0.0
 
+jobs:
+  build:
+    docker:
+      - image: cimg/python:3.8
+    steps:
+      - checkout
+      - run: echo "Build app..."
+
+  test:
+    docker:
+      - image: cimg/python:3.8
+    steps:
+      - checkout
+      - run: echo "Run tests..."
+
+  deploy-test:
+    docker:
+      - image: cimg/python:3.8
     steps:
       - checkout
       - run:
-          name: "Say hello"
-          command: "echo Hello, World!"
+          name: Deploy to Testing Environment
+          command: |
+            echo "Deploy test..."
+
+  deploy-prod:
+    docker:
+      - image: cimg/python:3.8
+    steps:
+      - checkout
+      - run:
+          name: Deploy to Production Environment
+          command: |
+            echo "Deploy prod..."
 
 workflows:
-  say-hello-workflow:
+  build_and_deploy:
     jobs:
-      - say-hello
+      - build
+      - test:
+          requires:
+            - build
+      - deploy-test:
+          requires:
+            - test
+      - deploy-prod:
+          requires:
+            - deploy-test
+          filters:
+            tags:
+              only: /^release-.*/
+            branches:
+              ignore: /.*/
