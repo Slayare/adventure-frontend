@@ -1,7 +1,16 @@
 version: 2.1
 
 jobs:
-  build_and_push_docker_image:
+  install_dependencies:
+    docker:
+      - image: cimg/node:14.17
+    steps:
+      - checkout
+      - run:
+          name: Install Dependencies
+          command: npm install
+
+  build_and_push_docker_image: # TODO: tag docker imgs for envs / caching
     docker:
       - image: cimg/python:3.8
     steps:
@@ -12,17 +21,19 @@ jobs:
           command: |
             echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_USERNAME" --password-stdin
       - run:
-          name: Build and Push Docker Image
+          name: Build and push Docker Image
           command: |
             docker build -t $DOCKER_USERNAME/adventure-frontend:$CIRCLE_SHA1 .
             docker push $DOCKER_USERNAME/adventure-frontend:$CIRCLE_SHA1
 
   test:
     docker:
-      - image: cimg/python:3.8
+      - image: cimg/node:14.17
     steps:
       - checkout
-      - run: echo "Run tests..."
+      - run:
+          name: Run tests
+          command: npm test
       - store_test_results:
           path: test-results
 
@@ -65,10 +76,13 @@ jobs:
 workflows:
   build_and_deploy:
     jobs:
-      - build_and_push_docker_image
+      - install_dependencies
       - test:
           requires:
-            - build_and_push_docker_image
+            - install_dependencies
+      - build_and_push_docker_image:
+          requires:
+            - test
       - deploy-test:
           requires:
             - test
