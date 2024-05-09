@@ -12,7 +12,7 @@ jobs:
 
   build_and_push_docker_image: # TODO: tag docker imgs for envs / caching
     docker:
-      - image: cimg/python:3.8
+      - image: cimg/node:14.17
     steps:
       - checkout
       - setup_remote_docker
@@ -39,7 +39,7 @@ jobs:
 
   deploy-test:
     docker:
-      - image: cimg/python:3.8
+      - image: cimg/node:14.17
     steps:
       - checkout
       - run:
@@ -57,7 +57,7 @@ jobs:
 
   deploy-prod:
     docker:
-      - image: cimg/python:3.8
+      - image: cimg/node:14.17
     steps:
       - checkout
       - run:
