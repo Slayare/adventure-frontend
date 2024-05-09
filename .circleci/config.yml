@@ -1,9 +1,5 @@
 version: 2.1
 
-orbs:
-  aws-cli: circleci/aws-cli@4.0
-  aws-ecs: circleci/aws-ecs@4.0.0
-
 jobs:
   build_and_push_docker_image:
     docker:
@@ -27,6 +23,8 @@ jobs:
     steps:
       - checkout
       - run: echo "Run tests..."
+      - store_test_results:
+          path: test-results
 
   deploy-test:
     docker:
@@ -34,9 +32,17 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Deploy to Testing Environment
+          name: Create terraform.tfvars for Test
           command: |
-            echo "Deploy test..."
+            echo "ami_id = \"$TEST_AMI_ID\"" > terraform.tfvars
+            echo "image_tag = \"$DOCKER_USERNAME/adventure-frontend:$CIRCLE_SHA1\"" >> terraform.tfvars
+            echo "key_name = \"$KEY_NAME\"" >> terraform.tfvars
+      - run:
+          name: Deploy to Test environment
+          command: |
+            terraform init
+            terraform workspace select test
+            terraform apply -auto-approve -var-file="terraform.tfvars"
 
   deploy-prod:
     docker:
@@ -44,9 +50,17 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Deploy to Production Environment
+          name: Create terraform.tfvars for Prod
           command: |
-            echo "Deploy prod..."
+            echo "ami_id = \"$PROD_AMI_ID\"" > terraform.tfvars
+            echo "image_tag = \"$DOCKER_USERNAME/adventure-frontend:$CIRCLE_SHA1\"" >> terraform.tfvars
+            echo "key_name = \"$KEY_NAME\"" >> terraform.tfvars
+      - run:
+          name: Deploy to Prod Environment
+          command: |
+            terraform init
+            terraform workspace select prod
+            terraform apply -auto-approve -var-file="terraform.tfvars"
 
 workflows:
   build_and_deploy:
