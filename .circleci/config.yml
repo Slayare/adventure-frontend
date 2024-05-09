@@ -1,27 +1,21 @@
 version: 2.1
 
 jobs:
-  install_dependencies:
-    docker:
-      - image: cimg/node:14.17
-    steps:
-      - checkout
-      - run:
-          name: Install Dependencies
-          command: npm install
-
-  build_and_push_docker_image: # TODO: tag docker imgs for envs / caching
+  build_and_push_docker_image:
     docker:
       - image: cimg/node:14.17
     steps:
       - checkout
       - setup_remote_docker
       - run:
+          name: Install Dependencies
+          command: npm install
+      - run:
           name: Login to Docker Hub
           command: |
             echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_USERNAME" --password-stdin
       - run:
-          name: Build and push Docker Image
+          name: Build and Push Docker Image
           command: |
             docker build -t $DOCKER_USERNAME/adventure-frontend:$CIRCLE_SHA1 .
             docker push $DOCKER_USERNAME/adventure-frontend:$CIRCLE_SHA1
@@ -32,7 +26,10 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Run tests
+          name: Install Dependencies
+          command: npm install
+      - run:
+          name: Run Jest Tests
           command: npm run test:coverage
       - store_test_results:
           path: test-results
@@ -79,13 +76,10 @@ jobs:
 workflows:
   build_and_deploy:
     jobs:
-      - install_dependencies
+      - build_and_push_docker_image
       - test:
           requires:
-            - install_dependencies
-      - build_and_push_docker_image:
-          requires:
-            - test
+            - build_and_push_docker_image
       - deploy-test:
           requires:
             - test
