@@ -33,9 +33,12 @@ jobs:
       - checkout
       - run:
           name: Run tests
-          command: npm test
+          command: npm run test:coverage
       - store_test_results:
           path: test-results
+      - store_artifacts:
+          path: test-results
+          destination: test-results
 
   deploy-test:
     docker:

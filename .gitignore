@@ -29,3 +29,4 @@ output.txt
 
 # test coverage
 coverage/
+test-results
