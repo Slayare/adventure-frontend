@@ -1,4 +1,4 @@
-import { render, screen } from "@/utils/testing";
+import { render, screen } from "@testing-library/react";
 
 import Navigation from "./Navigation";
 

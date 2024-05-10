@@ -1,11 +1,11 @@
+import { CssBaseline, ScopedCssBaseline } from "@mui/joy";
 import { CssVarsProvider } from "@mui/joy/styles";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import { HomePage } from "@/pages/HomePage";
 import { SignIn } from "@/pages/SignIn";
 
 import theme from "./theme";
-import { CssBaseline, ScopedCssBaseline } from "@mui/joy";
 
 const App = () => (
   <CssVarsProvider theme={theme}>

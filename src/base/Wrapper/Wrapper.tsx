@@ -1,4 +1,5 @@
-import { Sheet, SheetProps, styled } from "@mui/joy";
+import { Sheet, SheetProps } from "@mui/joy";
+import { styled } from "@mui/joy/styles";
 import React from "react";
 
 interface WrapperProps extends SheetProps {}

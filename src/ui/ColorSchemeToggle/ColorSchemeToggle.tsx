@@ -1,6 +1,7 @@
 import DarkModeRoundedIcon from "@mui/icons-material/DarkModeRounded";
 import LightModeRoundedIcon from "@mui/icons-material/LightModeRounded";
-import { IconButtonProps, IconButton, useColorScheme } from "@mui/joy";
+import { IconButton, IconButtonProps } from "@mui/joy";
+import { useColorScheme } from "@mui/joy";
 import { useEffect, useState } from "react";
 
 import { useToggleMode } from "@/hooks/useToggleMode";

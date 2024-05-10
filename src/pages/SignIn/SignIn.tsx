@@ -1,9 +1,5 @@
 import { Layout } from "@/components/Layout";
-import Button from "@mui/joy/Button";
-import FormControl from "@mui/joy/FormControl";
-import FormLabel from "@mui/joy/FormLabel";
-import Input from "@mui/joy/Input";
-import Link from "@mui/joy/Link";
+import { Button, FormControl, FormLabel, Input, Link } from "@mui/joy";
 import React from "react";
 
 import { BodyText, SubHeading } from "@/base/Text";

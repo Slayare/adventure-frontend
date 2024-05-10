@@ -1,4 +1,5 @@
-import { Box, styled } from "@mui/joy";
+import { Box } from "@mui/joy";
+import { styled } from "@mui/joy/styles";
 
 import { ContainerProps } from "@/types";
 

@@ -1,4 +1,5 @@
-import { Button as MuiButton, styled } from "@mui/joy";
+import { Button as MuiButton } from "@mui/joy";
+import { styled } from "@mui/joy/styles";
 
 import { ButtonProps } from "@/types";
 

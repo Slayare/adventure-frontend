@@ -1,9 +1,5 @@
-import {
-  styled,
-  List as MuiList,
-  ListProps as MuiListProps,
-  ListItem,
-} from "@mui/joy";
+import { List as MuiList, ListProps as MuiListProps, ListItem } from "@mui/joy";
+import { styled } from "@mui/joy/styles";
 import React from "react";
 
 import { FONT_SIZES } from "@/constants";

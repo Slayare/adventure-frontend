@@ -1,4 +1,4 @@
-import { TypographySystem } from "@mui/joy";
+import { TypographySystem } from "@mui/joy/styles";
 import React from "react";
 
 import { FontType, TextProps } from "@/types";

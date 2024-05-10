@@ -1,4 +1,5 @@
-import { styled, Typography } from "@mui/joy";
+import { Typography } from "@mui/joy";
+import { styled } from "@mui/joy/styles";
 import React from "react";
 
 import { FONT_SIZES } from "@/constants";
