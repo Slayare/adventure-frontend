@@ -52,7 +52,7 @@ jobs:
           path: ./terraform
       - terraform/apply:
           path: ./terraform
-          var: 'test_ami_id="$TEST_AMI_ID",test_image_tag="$DOCKER_USERNAME/adventure-frontend:$CIRCLE_SHA1",key_name="$KEY_NAME"'
+          var: 'test_ami_id="$TEST_AMI_ID",test_image_tag="$DOCKER_USERNAME/adventure-frontend:$CIRCLE_SHA1",role_arn="$AWS_ROLE_ARN",key_name="$KEY_NAME"'
           workspace: test
 
   deploy-prod:
@@ -65,7 +65,7 @@ jobs:
           path: ./terraform
       - terraform/apply:
           path: ./terraform
-          var: 'prod_ami_id="$PROD_AMI_ID",prod_image_tag="$DOCKER_USERNAME/adventure-frontend:$CIRCLE_SHA1",key_name="$KEY_NAME"'
+          var: 'prod_ami_id="$PROD_AMI_ID",prod_image_tag="$DOCKER_USERNAME/adventure-frontend:$CIRCLE_SHA1",role_arn="$AWS_ROLE_ARN",key_name="$KEY_NAME"'
           workspace: prod
 
 workflows:

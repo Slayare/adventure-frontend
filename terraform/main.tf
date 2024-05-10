@@ -1,5 +1,9 @@
 provider "aws" {
   region = "ap-southeast-2"
+  assume_role {
+    role_arn     = var.role_arn
+    session_name = "session-name"
+  }
 }
 
 resource "aws_instance" "test_app_server" {

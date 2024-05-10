@@ -22,6 +22,11 @@ variable "prod_image_tag" {
   default     = "prod"
 }
 
+variable "role_arn" {
+  description = "Role for accessing EC2 instances"
+  type        = string
+}
+
 variable "key_name" {
   description = "Key name for EC2"
   type        = string
