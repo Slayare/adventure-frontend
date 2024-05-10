@@ -1,5 +1,8 @@
 version: 2.1
 
+orbs:
+  terraform: circleci/terraform@3.2.1
+
 jobs:
   build_and_push_docker_image:
     docker:
@@ -44,36 +47,38 @@ jobs:
       - image: cimg/node:16.0
     steps:
       - checkout
+      - terraform/install
       - run:
           name: Create terraform.tfvars for Test
           command: |
             echo "ami_id = \"$TEST_AMI_ID\"" > terraform.tfvars
             echo "image_tag = \"$DOCKER_USERNAME/adventure-frontend:$CIRCLE_SHA1\"" >> terraform.tfvars
             echo "key_name = \"$KEY_NAME\"" >> terraform.tfvars
-      - run:
-          name: Deploy to Test environment
-          command: |
-            terraform init
-            terraform workspace select test
-            terraform apply -auto-approve -var-file="terraform.tfvars"
+      - terraform/init:
+          path: .
+      - terraform/apply:
+          path: .
+          var_file: terraform.tfvars
+          workspace: test
 
   deploy-prod:
     docker:
       - image: cimg/node:16.0
     steps:
       - checkout
+      - terraform/install
       - run:
           name: Create terraform.tfvars for Prod
           command: |
             echo "ami_id = \"$PROD_AMI_ID\"" > terraform.tfvars
             echo "image_tag = \"$DOCKER_USERNAME/adventure-frontend:$CIRCLE_SHA1\"" >> terraform.tfvars
             echo "key_name = \"$KEY_NAME\"" >> terraform.tfvars
-      - run:
-          name: Deploy to Prod Environment
-          command: |
-            terraform init
-            terraform workspace select prod
-            terraform apply -auto-approve -var-file="terraform.tfvars"
+      - terraform/init:
+          path: .
+      - terraform/apply:
+          path: .
+          var_file: terraform.tfvars
+          workspace: prod
 
 workflows:
   build_and_deploy:
