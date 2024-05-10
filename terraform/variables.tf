@@ -1,11 +1,13 @@
 variable "test_ami_id" {
   description = "AMI for test instance"
   type        = string
+  default     = "fake-ami-test"
 }
 
 variable "prod_ami_id" {
   description = "AMI for prod instance"
   type        = string
+  default     = "fake-ami-prod"
 }
 
 variable "test_image_tag" {
