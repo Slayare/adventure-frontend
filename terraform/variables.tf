@@ -33,6 +33,16 @@ variable "role_arn" {
   type        = string
 }
 
+variable "access_key" {
+  description = "User access key"
+  type        = string
+}
+
+variable "secret_access_key" {
+  description = "Secret access key"
+  type        = string
+}
+
 variable "key_name" {
   description = "Key name for EC2"
   type        = string

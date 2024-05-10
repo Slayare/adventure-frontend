@@ -1,5 +1,7 @@
 provider "aws" {
   region = "ap-southeast-2"
+  access_key = var.access_key
+  secret_key = var.secret_access_key
   assume_role {
     role_arn     = var.role_arn
     session_name = "session-name"
