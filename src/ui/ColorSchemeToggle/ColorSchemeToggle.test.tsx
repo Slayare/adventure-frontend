@@ -1,9 +1,15 @@
 import { CssVarsProvider } from "@mui/joy/styles";
+import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 
 import * as useToggleMode from "@/hooks/useToggleMode";
 
 import ColorSchemeToggle from "./ColorSchemeToggle";
+
+jest.mock("@/hooks/useToggleMode", () => ({
+  __esModule: true,
+  ...jest.requireActual("@/hooks/useToggleMode"),
+}));
 
 describe("ColorSchemeToggle", () => {
   const toggleSpy = jest.spyOn(useToggleMode, "useToggleMode");
