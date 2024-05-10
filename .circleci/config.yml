@@ -3,7 +3,7 @@ version: 2.1
 jobs:
   build_and_push_docker_image:
     docker:
-      - image: cimg/node:14.17
+      - image: cimg/node:16.0
     steps:
       - checkout
       - setup_remote_docker
@@ -22,7 +22,7 @@ jobs:
 
   test:
     docker:
-      - image: cimg/node:14.17
+      - image: cimg/node:16.0
     steps:
       - checkout
       - run:
@@ -39,7 +39,7 @@ jobs:
 
   deploy-test:
     docker:
-      - image: cimg/node:14.17
+      - image: cimg/node:16.0
     steps:
       - checkout
       - run:
@@ -57,7 +57,7 @@ jobs:
 
   deploy-prod:
     docker:
-      - image: cimg/node:14.17
+      - image: cimg/node:16.0
     steps:
       - checkout
       - run:
