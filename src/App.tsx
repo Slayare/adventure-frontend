@@ -1,14 +1,24 @@
 import { CssVarsProvider } from "@mui/joy/styles";
-import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import Routes from "./Routes";
+import { HomePage } from "@/pages/HomePage";
+import { SignIn } from "@/pages/SignIn";
 
-const App = () => {
-  return (
-    <CssVarsProvider>
-      <Routes />
-    </CssVarsProvider>
-  );
-};
+import theme from "./theme";
+import { CssBaseline, ScopedCssBaseline } from "@mui/joy";
+
+const App = () => (
+  <CssVarsProvider theme={theme}>
+    <CssBaseline />
+    <ScopedCssBaseline>
+      <Router>
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+          <Route path="/sign-in" component={SignIn} />
+        </Switch>
+      </Router>
+    </ScopedCssBaseline>
+  </CssVarsProvider>
+);
 
 export default App;
