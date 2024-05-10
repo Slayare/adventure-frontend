@@ -3,7 +3,6 @@ import { MemoryRouter } from "react-router-dom";
 import { render, screen } from "@testing-library/react";
 
 import HomePage from "./HomePage";
-import { CssVarsProvider } from "@mui/joy";
 
 jest.mock("@mui/joy/styles", () => ({
   ...jest.requireActual("@mui/joy/styles"),
