@@ -1,5 +1,7 @@
 # adventure-frontend
 
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/Slayare/adventure-frontend/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/Slayare/adventure-frontend/tree/main)
+
 Rebuilding adventure-main to be open-source. Built trying out TDD Copilot and MUI styling lib. Goes with adventure-backend which is yet to be made public.
 
 ## Key features
