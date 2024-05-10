@@ -6,10 +6,16 @@ provider "aws" {
   }
 }
 
+resource "aws_iam_instance_profile" "read_ec2_profile" {
+  name = "ec2_profile"
+  role = var.iam_role_name
+}
+
 resource "aws_instance" "test_app_server" {
-  ami           = var.test_ami_id
-  instance_type = "t2.micro"
-  key_name      = var.key_name
+  ami                    = var.test_ami_id
+  instance_type          = "t2.micro"
+  key_name               = var.key_name
+  iam_instance_profile   = aws_iam_instance_profile.read_ec2_profile.name
 
   user_data = <<-EOF
               #!/bin/bash
@@ -28,9 +34,10 @@ resource "aws_instance" "test_app_server" {
 }
 
 resource "aws_instance" "prod_app_server" {
-  ami           = var.prod_ami_id
-  instance_type = "t2.micro"
-  key_name      = var.key_name
+  ami                    = var.prod_ami_id
+  instance_type          = "t2.micro"
+  key_name               = var.key_name
+  iam_instance_profile   = aws_iam_instance_profile.read_ec2_profile.name
 
   user_data = <<-EOF
               #!/bin/bash

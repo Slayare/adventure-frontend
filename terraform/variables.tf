@@ -27,6 +27,11 @@ variable "role_arn" {
   type        = string
 }
 
+variable "iam_role_name" {
+  description = "IAM role name to attach to instance"
+  type        = string
+}
+
 variable "key_name" {
   description = "Key name for EC2"
   type        = string
