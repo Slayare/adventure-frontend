@@ -9,8 +9,9 @@ module.exports = {
   },
   moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json", "node"],
   transform: {
-    "^.+\\.(ts|tsx)$": "ts-jest",
+    "^.+\\.(ts|tsx)$": "@swc/jest",
     "^.+\\.(js|jsx)$": "babel-jest",
   },
   transformIgnorePatterns: ["/node_modules/(?!@mui/joy).+\\.js$"],
+  extensionsToTreatAsEsm: [".ts", ".tsx"],
 };
