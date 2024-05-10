@@ -1,10 +1,15 @@
+import { MemoryRouter } from "react-router-dom";
 import { render, screen } from "@testing-library/react";
 
 import HomePage from "./HomePage";
 
 describe("HomePage", () => {
   it("should render homepage with message", () => {
-    render(<HomePage />);
+    render(
+      <MemoryRouter>
+        <HomePage />
+      </MemoryRouter>
+    );
     expect(screen.getByText("Some generic title")).toBeInTheDocument();
     expect(screen.getByText("The game that writes itself")).toBeInTheDocument();
   });

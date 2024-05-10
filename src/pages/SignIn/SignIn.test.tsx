@@ -1,13 +1,16 @@
-import { waitFor } from "@testing-library/react";
+import { MemoryRouter } from "react-router-dom";
+import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-
-import { render, screen } from "@testing-library/react";
 
 import SignIn from "./SignIn";
 
 describe("SignIn", () => {
   it("should render sign-in page", () => {
-    render(<SignIn />);
+    render(
+      <MemoryRouter>
+        <SignIn />
+      </MemoryRouter>
+    );
     expect(screen.getByText("Sign in to continue.")).toBeInTheDocument();
     expect(
       screen.getByPlaceholderText("Enter your email...")
@@ -23,7 +26,11 @@ describe("SignIn", () => {
     const email = "some-email@example.com";
     const password = "password";
 
-    render(<SignIn />);
+    render(
+      <MemoryRouter>
+        <SignIn />
+      </MemoryRouter>
+    );
     const emailInput = screen.getByPlaceholderText("Enter your email...");
     const passwordInput = screen.getByPlaceholderText("Enter your password...");
     userEvent.type(emailInput, email);
