@@ -20,16 +20,18 @@ module.exports = {
     rules: [
       {
         test: /\.tsx?$/,
-        use: [
-          {
-            loader: "babel-loader",
-            options: {
-              plugins: ["react-refresh/babel"],
+        exclude: /node_modules/,
+        use: {
+          loader: "swc-loader",
+          options: {
+            parseMap: false,
+            jsc: {
+              parser: {
+                syntax: "typescript",
+              },
             },
           },
-          "ts-loader",
-        ],
-        exclude: /node_modules/,
+        },
       },
       {
         test: /\.(png|jpe?g|gif|webp)$/i,

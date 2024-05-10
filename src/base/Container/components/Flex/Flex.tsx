@@ -1,3 +1,5 @@
+import React from "react";
+
 import { ContainerProps } from "@/types";
 
 import Container from "../../Container";

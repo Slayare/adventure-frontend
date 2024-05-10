@@ -1,3 +1,5 @@
+import React from "react";
+
 import { FontType, TextProps } from "@/types";
 
 import Text from "../../Text";

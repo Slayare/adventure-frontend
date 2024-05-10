@@ -1,4 +1,5 @@
 import { Stack } from "@mui/joy";
+import React from "react";
 
 import { BodyText } from "@/base/Text";
 import { Wrapper } from "@/base/Wrapper";

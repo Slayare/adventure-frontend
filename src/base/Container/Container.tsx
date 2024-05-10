@@ -1,5 +1,6 @@
 import { Box } from "@mui/joy";
 import { styled } from "@mui/joy/styles";
+import React from "react";
 
 import { ContainerProps } from "@/types";
 

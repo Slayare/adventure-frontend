@@ -1,3 +1,5 @@
+import React from "react";
+
 import { Flex } from "@/base/Container";
 import { Link } from "@/components/Link";
 import { PrimaryButton } from "@/base/Button";

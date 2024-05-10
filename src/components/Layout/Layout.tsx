@@ -1,3 +1,5 @@
+import React from "react";
+
 import { Flex } from "@/base/Container";
 import { Wrapper } from "@/base/Wrapper";
 

@@ -1,3 +1,5 @@
+import React from "react";
+
 import { Container, Flex } from "@/base/Container";
 import { SubHeading } from "@/base/Text";
 import { Wrapper } from "@/base/Wrapper";
