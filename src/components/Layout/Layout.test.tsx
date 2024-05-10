@@ -3,6 +3,11 @@ import { render, screen } from "@testing-library/react";
 
 import Layout from "./Layout";
 
+jest.mock("@mui/joy/styles", () => ({
+  ...jest.requireActual("@mui/joy/styles"),
+  useColorScheme: () => (component: any) => component,
+}));
+
 describe("Layout", () => {
   it("should render the layout with children", () => {
     render(

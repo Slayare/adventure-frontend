@@ -4,6 +4,11 @@ import userEvent from "@testing-library/user-event";
 
 import SignIn from "./SignIn";
 
+jest.mock("@mui/joy/styles", () => ({
+  ...jest.requireActual("@mui/joy/styles"),
+  useColorScheme: () => (component: any) => component,
+}));
+
 describe("SignIn", () => {
   it("should render sign-in page", () => {
     render(
