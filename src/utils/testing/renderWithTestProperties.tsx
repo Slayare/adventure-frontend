@@ -1,15 +1,12 @@
-import { CssVarsProvider } from "@mui/joy";
 import { render as rtlRender } from "@testing-library/react";
-import { BrowserRouter as Router } from "react-router-dom";
+import { MemoryRouter as Router } from "react-router-dom";
 
 const render = (
   ui: React.ReactNode,
   { route = "/", ...renderOptions } = {}
 ) => {
   const Wrapper = ({ children }: { children: React.ReactNode }) => (
-    <CssVarsProvider>
-      <Router>{children}</Router>
-    </CssVarsProvider>
+    <Router>{children}</Router>
   );
   return rtlRender(ui, { wrapper: Wrapper, ...renderOptions });
 };
