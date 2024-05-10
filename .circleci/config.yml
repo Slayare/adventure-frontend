@@ -48,17 +48,11 @@ jobs:
     steps:
       - checkout
       - terraform/install
-      - run:
-          name: Create terraform.tfvars for Test
-          command: |
-            echo "ami_id = \"$TEST_AMI_ID\"" > ./terraform/terraform.tfvars
-            echo "image_tag = \"$DOCKER_USERNAME/adventure-frontend:$CIRCLE_SHA1\"" >> ./terraform/terraform.tfvars
-            echo "key_name = \"$KEY_NAME\"" >> ./terraform/terraform.tfvars
       - terraform/init:
           path: ./terraform
       - terraform/apply:
           path: ./terraform
-          var_file: ./terraform/terraform.tfvars
+          var: 'ami_id="$TEST_AMI_ID",image_tag="$DOCKER_USERNAME/adventure-frontend:$CIRCLE_SHA1",key_name="$KEY_NAME"'
           workspace: test
 
   deploy-prod:
@@ -67,17 +61,11 @@ jobs:
     steps:
       - checkout
       - terraform/install
-      - run:
-          name: Create terraform.tfvars for Prod
-          command: |
-            echo "ami_id = \"$PROD_AMI_ID\"" > ./terraform/terraform.tfvars
-            echo "image_tag = \"$DOCKER_USERNAME/adventure-frontend:$CIRCLE_SHA1\"" >> ./terraform/terraform.tfvars
-            echo "key_name = \"$KEY_NAME\"" >> ./terraform/terraform.tfvars
       - terraform/init:
           path: ./terraform
       - terraform/apply:
           path: ./terraform
-          var_file: ./terraform/terraform.tfvars
+          var: 'ami_id="$PROD_AMI_ID",image_tag="$DOCKER_USERNAME/adventure-frontend:$CIRCLE_SHA1",key_name="$KEY_NAME"'
           workspace: prod
 
 workflows:
