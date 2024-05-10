@@ -22,13 +22,14 @@ variable "prod_image_tag" {
   default     = "prod"
 }
 
-variable "role_arn" {
-  description = "Role for accessing EC2 instances"
-  type        = string
-}
-
 variable "iam_role_name" {
   description = "IAM role name to attach to instance"
+  type        = string
+  default     = "read-ec2-service-role"
+}
+
+variable "role_arn" {
+  description = "Role for accessing EC2 instances"
   type        = string
 }
 
