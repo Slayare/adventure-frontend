@@ -1,19 +1,11 @@
 variable "ami_id" {
   description = "AMI for instances"
   type        = string
-  default     = {
-    test = "ami-test"
-    prod = "ami-prod"
-  }
 }
 
 variable "image_tag" {
   description = "Docker image tags for envs"
   type        = string
-  default     = {
-    test = "test"
-    prod = "prod"
-  }
 }
 
 variable "iam_role_name" {

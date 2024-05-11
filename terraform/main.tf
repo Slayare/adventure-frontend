@@ -18,7 +18,7 @@ provider "aws" {
 }
 
 resource "aws_instance" "test_app_server" {
-  ami            = var.ami_id[terraform.workspace]
+  ami            = local.workspace["ami_id"]
   instance_type  = "t2.micro"
   key_name       = var.key_name
 
@@ -28,8 +28,8 @@ resource "aws_instance" "test_app_server" {
               sudo amazon-linux-extras install docker
               sudo service docker start
               sudo usermod -a -G docker ec2-user
-              sudo docker pull ${var.image_tag[terraform.workspace]}
-              sudo docker run -d --restart unless-stopped -p 80:80 ${var.image_tag[terraform.workspace]}
+              sudo docker pull ${local.workspace["image_tag"]}
+              sudo docker run -d --restart unless-stopped -p 80:80 ${local.workspace["image_tag"]}
               EOF
 
   tags = {
@@ -39,7 +39,7 @@ resource "aws_instance" "test_app_server" {
 }
 
 resource "aws_instance" "prod_app_server" {
-  ami            = var.ami_id[terraform.workspace]
+  ami            = local.workspace["ami_id"]
   instance_type  = "t2.micro"
   key_name       = var.key_name
 
@@ -49,8 +49,8 @@ resource "aws_instance" "prod_app_server" {
               sudo amazon-linux-extras install docker
               sudo service docker start
               sudo usermod -a -G docker ec2-user
-              sudo docker pull ${var.image_tag[terraform.workspace]}
-              sudo docker run -d --restart unless-stopped -p 80:80 ${var.image_tag[terraform.workspace]}
+              sudo docker pull ${local.workspace["image_tag"]}
+              sudo docker run -d --restart unless-stopped -p 80:80 ${local.workspace["image_tag"]}
               EOF
 
   tags = {
