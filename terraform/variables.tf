@@ -33,3 +33,7 @@ variable "key_name" {
   description = "Key name for EC2"
   type        = string
 }
+
+locals {
+  workspace = local.environments[terraform.workspace]
+}

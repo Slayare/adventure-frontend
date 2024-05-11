@@ -1,5 +1,5 @@
 locals {
-   env = {
+   environments = {
       test = {
          ami_id    = "test-ami-id"
          image_tag = "test-image-tag"
