@@ -1,8 +1,3 @@
-# import {
-#   to = aws_instance.rolewithit-main
-#   id = "i-054729f9e8cad7999"
-# }
-
 terraform {
   required_providers {
     aws = {
@@ -45,22 +40,3 @@ resource "aws_instance" "rolewithit-instance" {
     Name = "rolewithit-${terraform.workspace}"
   }
 }
-
-# resource "aws_instance" "rolewithit-main" {
-#   ami            = var.ami_id
-#   instance_type  = local.workspace["instance_type"]
-#   key_name       = var.key_name
-
-#   user_data = <<-EOF
-#               #!/bin/bash
-#               sudo yum update -y
-#               sudo amazon-linux-extras install docker
-#               sudo service docker start
-#               sudo usermod -a -G docker ec2-user
-#               sudo docker pull ${var.image_tag}
-#               sudo docker run -d --restart unless-stopped -p 80:80 ${var.image_tag}
-#               EOF
-#   tags = {
-#     Name = "rolewithit-main"
-#   }
-# }
