@@ -47,7 +47,8 @@ jobs:
       - image: cimg/node:16.0
     steps:
       - checkout
-      - terraform/install
+      - terraform/install:
+          terraform_version: 1.5.0
       - terraform/init:
           path: ./terraform
       - terraform/plan:
