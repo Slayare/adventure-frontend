@@ -50,7 +50,7 @@ jobs:
       - terraform/install
       - terraform/init:
           path: ./terraform
-      - terraform/apply:
+      - terraform/plan:
           path: ./terraform
           var: >
             ami_id="$TEST_AMI_ID",
