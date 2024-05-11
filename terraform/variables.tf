@@ -36,7 +36,7 @@ variable "key_name" {
 
 variable "ec2_instance_id" {
   description = "EC2 instance ID"
-  type        = "string"
+  type        = string
 }
 
 locals {
