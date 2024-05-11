@@ -52,7 +52,7 @@ jobs:
           path: ./terraform
       - terraform/apply:
           path: ./terraform
-          var: 'test_ami_id="$TEST_AMI_ID",test_image_tag="$DOCKER_USERNAME/adventure-frontend:$CIRCLE_SHA1",role_arn="$AWS_ROLE_ARN",access_key="$AWS_ACCESS_KEY_ID",secret_access_key="$AWS_SECRET_ACCESS_KEY",key_name="$KEY_NAME"'
+          var: 'test_ami_id="$TEST_AMI_ID",test_image_tag="$DOCKER_USERNAME/adventure-frontend:$CIRCLE_SHA1",role_arn="$AWS_ROLE_ARN",access_key="$AWS_ACCESS_KEY",secret_access_key="$AWS_SECRET_ACCESS_KEY",key_name="$KEY_NAME"'
           workspace: test
 
   deploy-prod:
