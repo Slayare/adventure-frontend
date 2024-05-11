@@ -51,7 +51,7 @@ jobs:
           terraform_version: 1.8.3
       - terraform/init:
           path: ./terraform
-      - terraform/plan:
+      - terraform/apply:
           path: ./terraform
           var: >
             ami_id="$TEST_AMI_ID",
