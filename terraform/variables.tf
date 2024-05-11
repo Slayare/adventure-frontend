@@ -34,6 +34,11 @@ variable "key_name" {
   type        = string
 }
 
+variable "ec2_instance_id" {
+  description = "EC2 instance ID"
+  type        = "string"
+}
+
 locals {
   workspace = local.environments[terraform.workspace]
 }

@@ -60,6 +60,7 @@ jobs:
             access_key="$AWS_ACCESS_KEY",
             secret_access_key="$AWS_SECRET_ACCESS_KEY",
             key_name="$KEY_NAME"
+            ec2_instance_id="i-097dfb31b480b6f4f"
           workspace: test
 
   deploy-prod:
@@ -79,6 +80,7 @@ jobs:
             access_key="$AWS_ACCESS_KEY",
             secret_access_key="$AWS_SECRET_ACCESS_KEY",
             key_name="$KEY_NAME"
+            ec2_instance_id="i-054729f9e8cad7999"
           workspace: prod
 
 workflows:
