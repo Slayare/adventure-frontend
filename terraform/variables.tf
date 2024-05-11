@@ -25,7 +25,7 @@ variable "prod_image_tag" {
 variable "iam_role_name" {
   description = "IAM role name to attach to instance"
   type        = string
-  default     = "read-ec2-service-role"
+  default     = "circleci-role"
 }
 
 variable "role_arn" {
