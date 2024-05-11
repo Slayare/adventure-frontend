@@ -1,3 +1,13 @@
+import {
+  to = aws_instance.rolewithit-test
+  id = "i-097dfb31b480b6f4f"
+}
+
+import {
+  to = aws_instance.rolewithit-main
+  id = "i-054729f9e8cad7999"
+}
+
 terraform {
   required_providers {
     aws = {
