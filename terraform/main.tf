@@ -38,5 +38,6 @@ resource "aws_instance" "rolewithit-instance" {
               EOF
   tags = {
     Name = "rolewithit-${terraform.workspace}"
+    Environment = "${terraform.workspace}"
   }
 }
