@@ -1,25 +1,19 @@
-variable "test_ami_id" {
-  description = "AMI for test instance"
+variable "ami_id" {
+  description = "AMI for instances"
   type        = string
-  default     = "fake-ami-test"
+  default     = {
+    test = "ami-test"
+    prod = "ami-prod"
+  }
 }
 
-variable "prod_ami_id" {
-  description = "AMI for prod instance"
+variable "image_tag" {
+  description = "Docker image tags for envs"
   type        = string
-  default     = "fake-ami-prod"
-}
-
-variable "test_image_tag" {
-  description = "Docker image tag for test env"
-  type        = string
-  default     = "test"
-}
-
-variable "prod_image_tag" {
-  description = "Docker image tag for prod env"
-  type        = string
-  default     = "prod"
+  default     = {
+    test = "test"
+    prod = "prod"
+  }
 }
 
 variable "iam_role_name" {

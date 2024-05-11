@@ -13,12 +13,12 @@ provider "aws" {
   secret_key = var.secret_access_key
   assume_role {
     role_arn     = var.role_arn
-    session_name = "session-name"
+    session_name = "ci-build"
   }
 }
 
 resource "aws_instance" "test_app_server" {
-  ami            = var.test_ami_id
+  ami            = var.ami_id[terraform.workspace]
   instance_type  = "t2.micro"
   key_name       = var.key_name
 
@@ -28,8 +28,8 @@ resource "aws_instance" "test_app_server" {
               sudo amazon-linux-extras install docker
               sudo service docker start
               sudo usermod -a -G docker ec2-user
-              sudo docker pull ${var.test_image_tag}
-              sudo docker run -d --restart unless-stopped -p 80:80 ${var.test_image_tag}
+              sudo docker pull ${var.image_tag[terraform.workspace]}
+              sudo docker run -d --restart unless-stopped -p 80:80 ${var.image_tag[terraform.workspace]}
               EOF
 
   tags = {
@@ -39,7 +39,7 @@ resource "aws_instance" "test_app_server" {
 }
 
 resource "aws_instance" "prod_app_server" {
-  ami            = var.prod_ami_id
+  ami            = var.ami_id[terraform.workspace]
   instance_type  = "t2.micro"
   key_name       = var.key_name
 
@@ -49,8 +49,8 @@ resource "aws_instance" "prod_app_server" {
               sudo amazon-linux-extras install docker
               sudo service docker start
               sudo usermod -a -G docker ec2-user
-              sudo docker pull ${var.prod_image_tag}
-              sudo docker run -d --restart unless-stopped -p 80:80 ${var.prod_image_tag}
+              sudo docker pull ${var.image_tag[terraform.workspace]}
+              sudo docker run -d --restart unless-stopped -p 80:80 ${var.image_tag[terraform.workspace]}
               EOF
 
   tags = {
