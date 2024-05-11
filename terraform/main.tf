@@ -17,7 +17,7 @@ provider "aws" {
   }
 }
 
-resource "aws_instance" "test_app_server" {
+resource "aws_instance" "rolewithit-test" {
   ami            = local.workspace["ami_id"]
   instance_type  = "t2.micro"
   key_name       = var.key_name
@@ -31,14 +31,9 @@ resource "aws_instance" "test_app_server" {
               sudo docker pull ${local.workspace["image_tag"]}
               sudo docker run -d --restart unless-stopped -p 80:80 ${local.workspace["image_tag"]}
               EOF
-
-  tags = {
-    Name = "Test Application Server"
-    Environment = "Test"
-  }
 }
 
-resource "aws_instance" "prod_app_server" {
+resource "aws_instance" "rolewithit-main" {
   ami            = local.workspace["ami_id"]
   instance_type  = "t2.micro"
   key_name       = var.key_name
@@ -52,9 +47,4 @@ resource "aws_instance" "prod_app_server" {
               sudo docker pull ${local.workspace["image_tag"]}
               sudo docker run -d --restart unless-stopped -p 80:80 ${local.workspace["image_tag"]}
               EOF
-
-  tags = {
-    Name = "Production Application Server"
-    Environment = "Production"
-  }
 }
