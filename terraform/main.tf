@@ -18,8 +18,8 @@ provider "aws" {
 }
 
 resource "aws_instance" "rolewithit-test" {
-  ami            = local.workspace["ami_id"]
-  instance_type  = "t2.micro"
+  ami            = var.ami_id
+  instance_type  = local.workspace["instance_type"]
   key_name       = var.key_name
 
   user_data = <<-EOF
@@ -28,14 +28,18 @@ resource "aws_instance" "rolewithit-test" {
               sudo amazon-linux-extras install docker
               sudo service docker start
               sudo usermod -a -G docker ec2-user
-              sudo docker pull ${local.workspace["image_tag"]}
-              sudo docker run -d --restart unless-stopped -p 80:80 ${local.workspace["image_tag"]}
+              sudo docker pull ${var.image_tag}
+              sudo docker run -d --restart unless-stopped -p 80:80 ${var.image_tag}
               EOF
+  tags = {
+    Name = "rolewithit-test"
+    Environment = "Test"
+  }
 }
 
 resource "aws_instance" "rolewithit-main" {
-  ami            = local.workspace["ami_id"]
-  instance_type  = "t2.micro"
+  ami            = var.ami_id
+  instance_type  = local.workspace["instance_type"]
   key_name       = var.key_name
 
   user_data = <<-EOF
@@ -44,7 +48,11 @@ resource "aws_instance" "rolewithit-main" {
               sudo amazon-linux-extras install docker
               sudo service docker start
               sudo usermod -a -G docker ec2-user
-              sudo docker pull ${local.workspace["image_tag"]}
-              sudo docker run -d --restart unless-stopped -p 80:80 ${local.workspace["image_tag"]}
+              sudo docker pull ${var.image_tag}
+              sudo docker run -d --restart unless-stopped -p 80:80 ${var.image_tag}
               EOF
+  tags = {
+    Name = "rolewithit-main"
+    Environment = "Prod"
+  }
 }

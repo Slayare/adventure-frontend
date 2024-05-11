@@ -1,12 +1,10 @@
 locals {
    environments = {
       test = {
-         ami_id    = "test-ami-id"
-         image_tag = "test-image-tag"
+         instance_type = "t2.micro"
       }
       prod = {
-         ami_id    = "prod-ami-id"
-         image_tag = "prod-image-tag"
+         instance_type = "t2.micro"
       }
    }
 }
