@@ -26,8 +26,6 @@ jobs:
   test:
     docker:
       - image: cimg/node:16.0
-    parallelism: 2
-    resource_class: large
     steps:
       - checkout
       - run:
