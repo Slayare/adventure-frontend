@@ -14,4 +14,9 @@ module.exports = {
   },
   transformIgnorePatterns: ["/node_modules/(?!@mui/joy).+\\.js$"],
   extensionsToTreatAsEsm: [".ts", ".tsx"],
+  coverageDirectory: "coverage",
+  reporters: [
+    "default",
+    ["jest-junit", { outputDirectory: "coverage", outputName: "junit.xml" }],
+  ],
 };
