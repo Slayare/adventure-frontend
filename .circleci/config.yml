@@ -86,7 +86,13 @@ jobs:
 workflows:
   build_and_deploy:
     jobs:
-      - deploy-test
+      - build_and_push_docker_image
+      - test:
+          requires:
+            - build_and_push_docker_image
+      - deploy-test:
+          requires:
+            - test
       - deploy-prod:
           requires:
             - deploy-test

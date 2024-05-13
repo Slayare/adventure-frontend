@@ -1,3 +1,9 @@
+variable "iam_role_name" {
+  description = "IAM role name to attach to instance"
+  type        = string
+  default     = "circleci-role"
+}
+
 variable "ami_id" {
   description = "AMI for instances"
   type        = string
@@ -6,12 +12,6 @@ variable "ami_id" {
 variable "image_tag" {
   description = "Docker image tags for envs"
   type        = string
-}
-
-variable "iam_role_name" {
-  description = "IAM role name to attach to instance"
-  type        = string
-  default     = "circleci-role"
 }
 
 variable "role_arn" {
