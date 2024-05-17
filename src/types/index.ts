@@ -4,6 +4,10 @@ import {
   TypographyProps,
 } from "@mui/joy";
 
+// Types
+export type ColorScheme = "light" | "dark";
+
+// Enums
 export enum BackgroundType {
   STATIC = "STATIC",
   DYNAMIC = "DYNAMIC",
@@ -24,9 +28,20 @@ export enum FontType {
   BODY = "BODY",
 }
 
+// Component interfaces
 export interface TextProps extends TypographyProps {
   type?: FontType;
 }
 
 export interface ButtonProps extends MuiButtonProps {}
 export interface ContainerProps extends BoxProps {}
+
+// Stores
+export interface BackgroundSlice {
+  backgroundType: BackgroundType;
+  toggleBackgroundType: () => void;
+}
+export interface ModeSlice {
+  mode: ColorScheme;
+  toggleMode: () => void;
+}
