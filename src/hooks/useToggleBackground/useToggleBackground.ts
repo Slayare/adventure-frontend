@@ -8,8 +8,8 @@ const useToggleBackground = () => {
   );
 
   const toggleBackgroundType = useCallback(() => {
-    setBackgroundType(
-      backgroundType === BackgroundType.STATIC
+    setBackgroundType((prevType) =>
+      prevType === BackgroundType.STATIC
         ? BackgroundType.DYNAMIC
         : BackgroundType.STATIC
     );
