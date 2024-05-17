@@ -19,6 +19,15 @@ jest.mock("../../../public/assets", () => ({
 
 jest.mock("@mui/joy/styles");
 
+const getBackgroundHookWithResult = (
+  backgroundType: BackgroundType,
+  expected: string
+) => {
+  const { result } = renderHook(() => useBackground({ backgroundType }));
+
+  expect(result.current).toBe(expected);
+};
+
 describe("useBackground", () => {
   describe("dark theme", () => {
     beforeEach(() => {
@@ -32,19 +41,11 @@ describe("useBackground", () => {
     });
 
     it("should return static background when background type is static", () => {
-      const { result } = renderHook(() =>
-        useBackground({ backgroundType: BackgroundType.STATIC })
-      );
-
-      expect(result.current).toBe(darkStatic);
+      getBackgroundHookWithResult(BackgroundType.STATIC, darkStatic);
     });
 
     it("should return dynamic background when background type is dynamic", () => {
-      const { result } = renderHook(() =>
-        useBackground({ backgroundType: BackgroundType.DYNAMIC })
-      );
-
-      expect(result.current).toBe(darkDynamic);
+      getBackgroundHookWithResult(BackgroundType.DYNAMIC, darkDynamic);
     });
   });
 
@@ -59,19 +60,11 @@ describe("useBackground", () => {
       jest.resetAllMocks();
     });
     it("should return static background when background type is static", () => {
-      const { result } = renderHook(() =>
-        useBackground({ backgroundType: BackgroundType.STATIC })
-      );
-
-      expect(result.current).toBe(lightStatic);
+      getBackgroundHookWithResult(BackgroundType.STATIC, lightStatic);
     });
 
     it("should return dynamic background when background type is dynamic", () => {
-      const { result } = renderHook(() =>
-        useBackground({ backgroundType: BackgroundType.DYNAMIC })
-      );
-
-      expect(result.current).toBe(lightDynamic);
+      getBackgroundHookWithResult(BackgroundType.DYNAMIC, lightDynamic);
     });
   });
 });
