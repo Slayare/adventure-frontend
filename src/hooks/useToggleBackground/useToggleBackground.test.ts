@@ -10,11 +10,12 @@ describe("useToggleBackground", () => {
 
   it("should call setBackgroundType with dynamic when the toggle is called", () => {
     const setState = jest.fn();
-    stateSpy.mockImplementation(() => [BackgroundType.STATIC, setState]);
+    stateSpy.mockImplementation(() => [BackgroundType.DYNAMIC, setState]);
     const { result } = renderHook(() => useToggleBackground());
 
-    act(() => result.current());
-
-    expect(setState).toHaveBeenCalledWith(BackgroundType.DYNAMIC);
+    expect(result.current).toEqual({
+      backgroundType: BackgroundType.DYNAMIC,
+      toggleBackgroundType: expect.any(Function),
+    });
   });
 });

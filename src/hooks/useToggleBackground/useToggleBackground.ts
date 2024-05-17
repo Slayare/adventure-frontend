@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 
 import { BackgroundType } from "@/types";
 
@@ -7,13 +7,15 @@ const useToggleBackground = () => {
     BackgroundType.STATIC
   );
 
-  return () => {
+  const toggleBackgroundType = useCallback(() => {
     setBackgroundType(
       backgroundType === BackgroundType.STATIC
         ? BackgroundType.DYNAMIC
         : BackgroundType.STATIC
     );
-  };
+  }, []);
+
+  return { backgroundType, toggleBackgroundType };
 };
 
 export default useToggleBackground;
