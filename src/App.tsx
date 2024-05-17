@@ -9,7 +9,7 @@ import { SignIn } from "@/pages/SignIn";
 import theme from "./theme";
 
 const App = () => (
-  <CssVarsProvider theme={theme}>
+  <CssVarsProvider defaultMode="system" theme={theme}>
     <CssBaseline />
     <ScopedCssBaseline>
       <Router>
