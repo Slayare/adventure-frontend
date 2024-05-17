@@ -4,6 +4,11 @@ import {
   TypographyProps,
 } from "@mui/joy";
 
+export enum BackgroundType {
+  STATIC = "STATIC",
+  DYNAMIC = "DYNAMIC",
+}
+
 export enum HeadingType {
   H1 = "H1",
   H2 = "H2",
