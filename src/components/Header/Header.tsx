@@ -35,8 +35,10 @@ const Header = () => (
           </SubHeading>
         </Container>
       </Link>
-      <ColorSchemeToggle />
-      <BackgroundTypeToggle />
+      <Flex gap={1}>
+        <ColorSchemeToggle />
+        <BackgroundTypeToggle />
+      </Flex>
     </Flex>
     <Navigation />
   </Wrapper>
