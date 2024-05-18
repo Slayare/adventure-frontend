@@ -1,51 +1,32 @@
 #!/bin/bash
+LOG_FILE="/var/log/user-data.log"
+
+exec > >(tee -a $LOG_FILE /var/log/cloud-init-output.log) 2>&1
+
 echo "Starting user data script..."
+
+echo "Running yum update..."
 sudo yum update -y
-if [ $? -eq 0 ]; then
-    echo "Yum update completed successfully!"
-else
-    echo "Yum update failed."
-    exit 1
-fi
+echo "Yum update completed with exit code $?"
 
-sudo amazon-linux-extras install docker
-if [ $? -eq 0 ]; then
-    echo "Docker installed successfully!"
-else
-    echo "Docker install failed."
-    exit 1
-fi
+echo "Installing Docker..."
+sudo amazon-linux-extras install docker -y
+echo "Docker installation completed with exit code $?"
 
+echo "Starting Docker service..."
 sudo service docker start
-if [ $? -eq 0 ]; then
-    echo "Docker service started successfully!"
-else
-    echo "Failed to start Docker service."
-    exit 1
-fi
+echo "Docker service start completed with exit code $?"
 
+echo "Adding ec2-user to Docker group..."
 sudo usermod -a -G docker ec2-user
-if [ $? -eq 0 ]; then
-    echo "Added ec2-user to the Docker group successfully!"
-else
-    echo "Failed to add ec2-user to the Docker group."
-    exit 1
-fi
+echo "Usermod completed with exit code $?"
 
+echo "Pulling Docker image..."
 sudo docker pull ${var.image_tag}
-if [ $? -eq 0 ]; then
-    echo "Docker image pulled successfully!"
-else
-    echo "Failed to pull Docker image."
-    exit 1
-fi
+echo "Docker pull completed with exit code $?"
 
+echo "Running Docker container..."
 sudo docker run -d --restart unless-stopped -p 80:80 ${var.image_tag}
-if [ $? -eq 0 ]; then
-    echo "Docker container started successfully!"
-else
-    echo "Failed to start Docker container."
-    exit 1
-fi
+echo "Docker run completed with exit code $?"
 
 echo "User data script completed!"
