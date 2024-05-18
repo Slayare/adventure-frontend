@@ -1,6 +1,7 @@
 import { useColorScheme } from "@mui/joy/styles";
 import { renderHook } from "@testing-library/react";
 
+import * as useAppStore from "@/store/useAppStore";
 import { BackgroundType } from "@/types";
 
 import useBackground from "./useBackground";
@@ -17,54 +18,60 @@ jest.mock("../../../public/assets", () => ({
   lightDynamic: "light-dynamic.gif",
 }));
 
-jest.mock("@mui/joy/styles");
+jest.mock("@/store/useAppStore", () => {
+  return {
+    __esModule: true,
+    default: jest.fn(),
+  };
+});
+
+jest.mock("@mui/joy/styles", () => ({
+  ...jest.requireActual("@mui/joy/styles"),
+  useColorScheme: () => ({
+    setMode: jest.fn(),
+  }),
+}));
 
 const getBackgroundHookWithResult = (
+  mode: string,
   backgroundType: BackgroundType,
   expected: string
 ) => {
-  const { result } = renderHook(() => useBackground({ backgroundType }));
+  // @ts-ignore
+  useAppStore.default.mockReturnValue({
+    mode,
+    backgroundType,
+  });
 
+  const { result } = renderHook(() => useBackground());
   expect(result.current).toBe(expected);
+
+  // @ts-ignore
+  useAppStore.default.mockReset();
 };
 
 describe("useBackground", () => {
   describe("dark theme", () => {
-    beforeEach(() => {
-      (useColorScheme as jest.Mock).mockReturnValue({
-        mode: "dark",
-      });
-    });
-
-    afterEach(() => {
-      jest.resetAllMocks();
-    });
-
     it("should return static background when background type is static", () => {
-      getBackgroundHookWithResult(BackgroundType.STATIC, darkStatic);
+      getBackgroundHookWithResult("dark", BackgroundType.STATIC, darkStatic);
     });
 
     it("should return dynamic background when background type is dynamic", () => {
-      getBackgroundHookWithResult(BackgroundType.DYNAMIC, darkDynamic);
+      getBackgroundHookWithResult("dark", BackgroundType.DYNAMIC, darkDynamic);
     });
   });
 
   describe("light theme", () => {
-    beforeEach(() => {
-      (useColorScheme as jest.Mock).mockReturnValue({
-        mode: "light",
-      });
-    });
-
-    afterEach(() => {
-      jest.resetAllMocks();
-    });
     it("should return static background when background type is static", () => {
-      getBackgroundHookWithResult(BackgroundType.STATIC, lightStatic);
+      getBackgroundHookWithResult("light", BackgroundType.STATIC, lightStatic);
     });
 
     it("should return dynamic background when background type is dynamic", () => {
-      getBackgroundHookWithResult(BackgroundType.DYNAMIC, lightDynamic);
+      getBackgroundHookWithResult(
+        "light",
+        BackgroundType.DYNAMIC,
+        lightDynamic
+      );
     });
   });
 });

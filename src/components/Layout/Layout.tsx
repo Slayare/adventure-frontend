@@ -2,17 +2,17 @@ import React from "react";
 
 import { Flex } from "@/base/Container";
 import { Wrapper } from "@/base/Wrapper";
+import { useBackground } from "@/hooks/useBackground";
 
 import { Header } from "../Header";
 import { Footer } from "../Footer";
-
-import { darkDynamic } from "../../../public/assets";
 
 interface LayoutProps {
   children: React.ReactNode;
 }
 
 const Layout = ({ children }: LayoutProps) => {
+  const background = useBackground();
   return (
     <Wrapper
       sx={{
@@ -27,7 +27,7 @@ const Layout = ({ children }: LayoutProps) => {
           left: 0,
           right: 0,
           bottom: 0,
-          backgroundImage: `url(${darkDynamic})`,
+          backgroundImage: `url(${background})`,
           backgroundRepeat: "repeat",
           opacity: 0.65,
           filter: "blur(8px)",

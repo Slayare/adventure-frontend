@@ -7,7 +7,9 @@ import SignIn from "./SignIn";
 
 jest.mock("@mui/joy/styles", () => ({
   ...jest.requireActual("@mui/joy/styles"),
-  useColorScheme: () => (component: any) => component,
+  useColorScheme: () => ({
+    setMode: jest.fn(),
+  }),
 }));
 
 describe("SignIn", () => {
