@@ -30,7 +30,7 @@ jobs:
       - checkout
       - run:
           name: Install Dependencies
-          command: npm install
+          command: ./scripts/install_dependencies.sh
       - run:
           name: Run Jest Tests
           command: npm run test:coverage
