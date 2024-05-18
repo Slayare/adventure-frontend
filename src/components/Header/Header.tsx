@@ -5,6 +5,7 @@ import { SubHeading } from "@/base/Text";
 import { Wrapper } from "@/base/Wrapper";
 import { Navigation } from "@/components/Navigation";
 import { Link } from "@/components/Link";
+import { BackgroundTypeToggle } from "@/ui/BackgroundTypeToggle";
 import { ColorSchemeToggle } from "@/ui/ColorSchemeToggle";
 
 const Header = () => (
@@ -35,6 +36,7 @@ const Header = () => (
         </Container>
       </Link>
       <ColorSchemeToggle />
+      <BackgroundTypeToggle />
     </Flex>
     <Navigation />
   </Wrapper>
