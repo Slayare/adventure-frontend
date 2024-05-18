@@ -2,39 +2,34 @@ import { CssVarsProvider } from "@mui/joy/styles";
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 
-import * as useToggleMode from "@/hooks/useToggleMode";
+import * as useAppStore from "@/store/useAppStore";
 
 import ColorSchemeToggle from "./ColorSchemeToggle";
 
-jest.mock("@/hooks/useToggleMode", () => ({
-  __esModule: true,
-  ...jest.requireActual("@/hooks/useToggleMode"),
-}));
+jest.mock("@/store/useAppStore", () => {
+  return {
+    __esModule: true,
+    ...jest.requireActual("@/store/useAppStore"),
+  };
+});
 
 describe("ColorSchemeToggle", () => {
-  const toggleSpy = jest.spyOn(useToggleMode, "useToggleMode");
+  const storeSpy = jest.spyOn(useAppStore, "default");
 
   beforeEach(() => {
-    toggleSpy.mockClear();
+    storeSpy.mockClear();
   });
 
   it("should render toggle with icon", () => {
-    render(
-      <CssVarsProvider defaultMode="light">
-        <ColorSchemeToggle />
-      </CssVarsProvider>
-    );
+    render(<ColorSchemeToggle />);
     expect(screen.getByLabelText("toggle light/dark mode")).toBeInTheDocument();
   });
 
   it("should toggle mode when button is clicked", () => {
     const toggleMock = jest.fn();
-    toggleSpy.mockImplementation(() => toggleMock);
-    render(
-      <CssVarsProvider defaultMode="light">
-        <ColorSchemeToggle />
-      </CssVarsProvider>
-    );
+    storeSpy.mockReturnValueOnce("light");
+    storeSpy.mockReturnValueOnce(toggleMock);
+    render(<ColorSchemeToggle />);
 
     fireEvent.click(screen.getByRole("button"));
 
