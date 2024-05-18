@@ -26,16 +26,7 @@ resource "aws_instance" "rolewithit-instance" {
   ami            = var.ami_id
   instance_type  = local.workspace["instance_type"]
   key_name       = var.key_name
-
-  user_data = <<-EOF
-              #!/bin/bash
-              sudo yum update -y
-              sudo amazon-linux-extras install docker
-              sudo service docker start
-              sudo usermod -a -G docker ec2-user
-              sudo docker pull ${var.image_tag}
-              sudo docker run -d --restart unless-stopped -p 80:80 ${var.image_tag}
-              EOF
+  user_data      = file("../scripts/ec2_docker_setup.sh")
   tags = {
     Name = "rolewithit-${terraform.workspace}"
     Environment = "${terraform.workspace}"
