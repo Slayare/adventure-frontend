@@ -7,6 +7,6 @@ if [ -d "node_modules" ]; then
 fi
 
 echo "Installing dependencies..."
-npm install
+npm install --legacy-peer-deps
 
 echo "Dependencies installed successfully!"
