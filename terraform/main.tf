@@ -23,10 +23,11 @@ import {
 }
 
 resource "aws_instance" "rolewithit-instance" {
-  ami            = var.ami_id
-  instance_type  = local.workspace["instance_type"]
-  key_name       = var.key_name
-  user_data      = file("../scripts/ec2_docker_setup.sh")
+  ami                         = var.ami_id
+  instance_type               = local.workspace["instance_type"]
+  key_name                    = var.key_name
+  user_data                   = file("../scripts/ec2_docker_setup.sh")
+  user_data_replace_on_change = true
   tags = {
     Name = "rolewithit-${terraform.workspace}"
     Environment = "${terraform.workspace}"
