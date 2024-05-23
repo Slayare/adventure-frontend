@@ -37,6 +37,22 @@ jobs:
       - store_test_results:
           path: coverage/junit.xml
 
+  setup-backend:
+    docker:
+      - image: cimg/node:16.0
+    steps:
+      - checkout
+      - terraform/install:
+          terraform_version: 1.8.3
+      - terraform/init:
+          path: ./terraform/backend
+      - terraform/apply:
+          path: ./terraform/backend
+          var: >
+            access_key="$AWS_ACCESS_KEY",
+            secret_access_key="$AWS_SECRET_ACCESS_KEY",
+            role_arn="$AWS_ROLE_ARN",
+
   deploy-test:
     docker:
       - image: cimg/node:16.0
@@ -49,12 +65,11 @@ jobs:
       - terraform/apply:
           path: ./terraform
           var: >
-            ami_id="$TEST_AMI_ID",
             image_tag="$DOCKER_USERNAME/adventure-frontend:$CIRCLE_SHA1",
             role_arn="$AWS_ROLE_ARN",
             access_key="$AWS_ACCESS_KEY",
             secret_access_key="$AWS_SECRET_ACCESS_KEY",
-            key_name="$KEY_NAME"
+            key_name="$KEY_NAME",
             ec2_instance_id="i-097dfb31b480b6f4f"
           workspace: test
 
@@ -69,12 +84,11 @@ jobs:
       - terraform/apply:
           path: ./terraform
           var: >
-            ami_id="$PROD_AMI_ID",
             image_tag="$DOCKER_USERNAME/adventure-frontend:$CIRCLE_SHA1",
             role_arn="$AWS_ROLE_ARN",
             access_key="$AWS_ACCESS_KEY",
             secret_access_key="$AWS_SECRET_ACCESS_KEY",
-            key_name="$KEY_NAME"
+            key_name="$KEY_NAME",
             ec2_instance_id="i-054729f9e8cad7999"
           workspace: prod
 
@@ -85,9 +99,12 @@ workflows:
       - test:
           requires:
             - build_and_push_docker_image
-      - deploy-test:
+      - setup-backend:
           requires:
             - test
+      - deploy-test:
+          requires:
+            - setup-backend
       - deploy-prod:
           requires:
             - deploy-test

@@ -4,11 +4,6 @@ variable "iam_role_name" {
   default     = "circleci-role"
 }
 
-variable "ami_id" {
-  description = "AMI for instances"
-  type        = string
-}
-
 variable "image_tag" {
   description = "Docker image tags for envs"
   type        = string

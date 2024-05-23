@@ -5,6 +5,13 @@ terraform {
       version = "~> 5.0"
     }
   }
+  backend "s3" {
+    bucket         = "rolewithit-tf-state-bucket"
+    key            = "terraform/state/terraform.tfstate"
+    region         = "ap-southeast-2"
+    dynamodb_table = "terraform-locks"
+    encrypt        = true
+  }
 }
 
 provider "aws" {
@@ -23,11 +30,11 @@ import {
 }
 
 resource "aws_instance" "rolewithit-instance" {
-  ami                         = var.ami_id
-  instance_type               = local.workspace["instance_type"]
-  key_name                    = var.key_name
-  user_data                   = file("../scripts/ec2_docker_setup.sh")
-  user_data_replace_on_change = true
+  ami            = var.ec2_instance_id
+  instance_type  = local.workspace["instance_type"]
+  key_name       = var.key_name
+  user_data      = file("../scripts/ec2_docker_setup.sh")
+
   tags = {
     Name = "rolewithit-${terraform.workspace}"
     Environment = "${terraform.workspace}"
