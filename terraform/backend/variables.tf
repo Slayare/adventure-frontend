@@ -7,8 +7,3 @@ variable "secret_access_key" {
   description = "Secret access key"
   type        = string
 }
-
-variable "role_arn" {
-  description = "Role for accessing EC2 instances"
-  type        = string
-}

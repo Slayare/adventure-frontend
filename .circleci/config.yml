@@ -51,7 +51,6 @@ jobs:
           var: >
             access_key="$AWS_ACCESS_KEY",
             secret_access_key="$AWS_SECRET_ACCESS_KEY",
-            role_arn="$AWS_ROLE_ARN",
 
   deploy-test:
     docker:
@@ -66,7 +65,6 @@ jobs:
           path: ./terraform
           var: >
             image_tag="$DOCKER_USERNAME/adventure-frontend:$CIRCLE_SHA1",
-            role_arn="$AWS_ROLE_ARN",
             access_key="$AWS_ACCESS_KEY",
             secret_access_key="$AWS_SECRET_ACCESS_KEY",
             key_name="$KEY_NAME",
@@ -85,7 +83,6 @@ jobs:
           path: ./terraform
           var: >
             image_tag="$DOCKER_USERNAME/adventure-frontend:$CIRCLE_SHA1",
-            role_arn="$AWS_ROLE_ARN",
             access_key="$AWS_ACCESS_KEY",
             secret_access_key="$AWS_SECRET_ACCESS_KEY",
             key_name="$KEY_NAME",

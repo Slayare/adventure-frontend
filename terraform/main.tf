@@ -12,7 +12,7 @@ terraform {
     dynamodb_table = "terraform-locks"
     encrypt        = true
     assume_role = {
-      role_arn     = var.role_arn
+      role_arn     = "arn:aws:iam::637423207610:role/circleci-role"
       session_name = "ci-build"
     }
   }
@@ -23,7 +23,7 @@ provider "aws" {
   access_key = var.access_key
   secret_key = var.secret_access_key
   assume_role {
-    role_arn     = var.role_arn
+    role_arn     = "arn:aws:iam::637423207610:role/circleci-role"
     session_name = "ci-build"
   }
 }
