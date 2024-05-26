@@ -22,7 +22,7 @@ data "aws_s3_bucket" "tf_state" {
 }
 
 resource "aws_s3_bucket_ownership_controls" "s3_ctrl" {
-  bucket = data.aws_s3_bucket.tf_state.id
+  bucket = data.aws_s3_bucket.tf_state.bucket
   rule {
     object_ownership = "BucketOwnerPreferred"
   }
@@ -30,22 +30,21 @@ resource "aws_s3_bucket_ownership_controls" "s3_ctrl" {
 
 resource "aws_s3_bucket_acl" "s3_acl" {
   depends_on = [aws_s3_bucket_ownership_controls.s3_ctrl]
-
-  bucket = data.aws_s3_bucket.tf_state.id
+  bucket = data.aws_s3_bucket.tf_state.bucket
   acl    = "private"
 }
 
 data "aws_dynamodb_table" "terraform_locks" {
-  name           = "terraform-locks"
+  name = "terraform-locks"
 
   tags = {
-    Name = "rolewithit-${terraform.workspace}"
+    Name        = "rolewithit-${terraform.workspace}"
     Environment = "${terraform.workspace}"
   }
 }
 
 resource "aws_dynamodb_table_export" "export_dynamo_to_s3" {
-  depends_on = [data.aws_dynamodb_table.terraform_locks]
+  depends_on = [data.aws_dynamodb_table.terraform_locks, data.aws_s3_bucket.tf_state]
   table_arn = data.aws_dynamodb_table.terraform_locks.arn
   s3_bucket = data.aws_s3_bucket.tf_state.bucket
 
