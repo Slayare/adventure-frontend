@@ -17,12 +17,7 @@ provider "aws" {
   }
 }
 
-import {
-  to = aws_s3_bucket.tf_state
-  id = "rolewithit-tf-state-bucket"
-}
-
-resource "aws_s3_bucket" "tf_state" {
+data "aws_s3_bucket" "tf_state" {
   bucket = "rolewithit-tf-state-bucket"
 }
 
@@ -40,12 +35,7 @@ resource "aws_s3_bucket_acl" "s3_acl" {
   acl    = "private"
 }
 
-import {
-  to = aws_dynamodb_table.terraform_locks
-  id = "terraform-locks"
-}
-
-resource "aws_dynamodb_table" "terraform_locks" {
+data "aws_dynamodb_table" "terraform_locks" {
   name           = "terraform-locks"
   hash_key       = "LockID"
   read_capacity  = 1
