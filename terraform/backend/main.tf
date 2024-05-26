@@ -43,3 +43,8 @@ data "aws_dynamodb_table" "terraform_locks" {
     Environment = "${terraform.workspace}"
   }
 }
+
+resource "aws_dynamodb_table_export" "export_dynamo_to_s3" {
+  table_arn = data.aws_dynamodb_table.terraform_locks.arn
+  s3_bucket = data.aws_s3_bucket.tf_state.id
+}
