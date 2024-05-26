@@ -47,5 +47,5 @@ data "aws_dynamodb_table" "terraform_locks" {
 resource "aws_dynamodb_table_export" "export_dynamo_to_s3" {
   depends_on = [data.aws_dynamodb_table.terraform_locks]
   table_arn = data.aws_dynamodb_table.terraform_locks.arn
-  s3_bucket = data.aws_s3_bucket.tf_state.id
+  s3_bucket = data.aws_s3_bucket.tf_state.bucket
 }
