@@ -37,14 +37,6 @@ resource "aws_s3_bucket_acl" "s3_acl" {
 
 data "aws_dynamodb_table" "terraform_locks" {
   name           = "terraform-locks"
-  hash_key       = "LockID"
-  read_capacity  = 1
-  write_capacity = 1
-
-  attribute {
-    name = "LockID"
-    type = "S"
-  }
 
   tags = {
     Name = "rolewithit-${terraform.workspace}"
