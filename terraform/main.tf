@@ -11,6 +11,10 @@ terraform {
     region         = "ap-southeast-2"
     dynamodb_table = "terraform-locks"
     encrypt        = true
+    assume_role = {
+      role_arn     = var.role_arn
+      session_name = "ci-build"
+    }
   }
 }
 
