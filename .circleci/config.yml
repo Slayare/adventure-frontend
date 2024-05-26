@@ -69,6 +69,7 @@ jobs:
             secret_access_key="$AWS_SECRET_ACCESS_KEY",
             key_name="$KEY_NAME",
             ec2_instance_id="$TEST_AMI_ID"
+            eip_alloc_id="$TEST_EIP_ID"
           workspace: test
 
   deploy-prod:
@@ -87,6 +88,7 @@ jobs:
             secret_access_key="$AWS_SECRET_ACCESS_KEY",
             key_name="$KEY_NAME",
             ec2_instance_id="$PROD_AMI_ID"
+            eip_alloc_id="$PROD_EIP_ID"
           workspace: prod
 
 workflows:

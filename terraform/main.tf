@@ -43,3 +43,12 @@ resource "aws_instance" "rolewithit-instance" {
     Environment = "${terraform.workspace}"
   }
 }
+
+data "aws_eip" "existing_eip" {
+  id = var.eip_alloc_id
+}
+
+resource "aws_eip_association" "eip_assoc" {
+  instance_id   = aws_instance.rolewithit-instance.id
+  allocation_id = data.aws_eip.existing_eip.id
+}
