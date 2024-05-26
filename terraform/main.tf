@@ -28,16 +28,15 @@ provider "aws" {
   }
 }
 
-import {
-  to = aws_instance.rolewithit-instance
-  id = var.ec2_instance_id
-}
-
 resource "aws_instance" "rolewithit-instance" {
   ami            = var.ec2_instance_id
   instance_type  = local.workspace["instance_type"]
   key_name       = var.key_name
   user_data      = file("../scripts/ec2_docker_setup.sh")
+
+  lifecycle {
+    create_before_destroy = true
+  }
 
   tags = {
     Name = "rolewithit-${terraform.workspace}"
