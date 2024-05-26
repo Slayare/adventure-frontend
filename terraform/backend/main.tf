@@ -22,7 +22,7 @@ data "aws_s3_bucket" "tf_state" {
 }
 
 resource "aws_s3_bucket_ownership_controls" "s3_ctrl" {
-  bucket = aws_s3_bucket.tf_state.id
+  bucket = data.aws_s3_bucket.tf_state.id
   rule {
     object_ownership = "BucketOwnerPreferred"
   }
@@ -31,7 +31,7 @@ resource "aws_s3_bucket_ownership_controls" "s3_ctrl" {
 resource "aws_s3_bucket_acl" "s3_acl" {
   depends_on = [aws_s3_bucket_ownership_controls.s3_ctrl]
 
-  bucket = aws_s3_bucket.tf_state.id
+  bucket = data.aws_s3_bucket.tf_state.id
   acl    = "private"
 }
 
