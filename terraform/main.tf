@@ -39,7 +39,7 @@ resource "aws_instance" "rolewithit-instance" {
   }
 
   tags = {
-    Name = "rolewithit-${terraform.workspace}"
+    Name        = "rolewithit-${terraform.workspace}"
     Environment = "${terraform.workspace}"
   }
 }
