@@ -1,3 +1,4 @@
+#cloud-boothook
 #!/bin/bash
 LOG_FILE="/var/log/user-data.log"
 
