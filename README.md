@@ -10,7 +10,11 @@ Rebuilding adventure-main to be open-source. Built trying out TDD Copilot and MU
 
 ## Installation
 
-How to install
+1. Install packages
+
+```
+npm install
+```
 
 ## Usage
 
