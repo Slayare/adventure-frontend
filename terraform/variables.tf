@@ -34,11 +34,6 @@ variable "eip_alloc_id" {
   type        = string
 }
 
-variable "eip_alloc_id" {
-  description = "Elastic IP allocation ID"
-  type        = string
-}
-
 locals {
   workspace = local.environments[terraform.workspace]
 }
