@@ -37,21 +37,6 @@ jobs:
       - store_test_results:
           path: coverage/junit.xml
 
-  setup-backend:
-    docker:
-      - image: cimg/node:16.0
-    steps:
-      - checkout
-      - terraform/install:
-          terraform_version: 1.8.4
-      - terraform/init:
-          path: ./terraform/backend
-      - terraform/apply:
-          path: ./terraform/backend
-          var: >
-            access_key="$AWS_ACCESS_KEY",
-            secret_access_key="$AWS_SECRET_ACCESS_KEY",
-
   deploy-test:
     docker:
       - image: cimg/node:16.0
@@ -99,12 +84,9 @@ workflows:
       - test:
           requires:
             - build_and_push_docker_image
-      - setup-backend:
-          requires:
-            - test
       - deploy-test:
           requires:
-            - setup-backend
+            - test
       - deploy-prod:
           requires:
             - deploy-test
