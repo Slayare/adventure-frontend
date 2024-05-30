@@ -55,6 +55,7 @@ jobs:
             key_name="$KEY_NAME",
             ami_id="$TEST_AMI_ID"
             eip_alloc_id="$TEST_EIP_ID"
+            security_group_id="$TEST_SECURITY_GROUP_ID"
           workspace: test
 
   deploy-prod:
@@ -75,6 +76,7 @@ jobs:
             key_name="$KEY_NAME",
             ami_id="$PROD_AMI_ID"
             eip_alloc_id="$PROD_EIP_ID"
+            security_group_id="$TEST_SECURITY_GROUP_ID"
           workspace: prod
 
 workflows:

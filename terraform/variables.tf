@@ -34,6 +34,11 @@ variable "eip_alloc_id" {
   type        = string
 }
 
+variable "security_group_id" {
+  description = "EC2 Security group ID"
+  type        = string
+}
+
 locals {
   workspace = local.environments[terraform.workspace]
 }

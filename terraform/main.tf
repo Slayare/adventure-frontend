@@ -52,3 +52,12 @@ resource "aws_eip_association" "eip_assoc" {
   instance_id   = aws_instance.rolewithit-instance.id
   allocation_id = data.aws_eip.existing_eip.id
 }
+
+data "aws_security_group" "rolewithit-sg" {
+  id = var.security_group_id
+}
+
+resource "aws_network_interface_sg_attachment" "sg_attachment" {
+  security_group_id    = data.aws_security_group.rolewithit-sg.id
+  network_interface_id = aws_instance.rolewithit-instance.primary_network_interface_id
+}
