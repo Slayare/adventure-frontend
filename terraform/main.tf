@@ -29,7 +29,7 @@ provider "aws" {
 }
 
 resource "aws_instance" "rolewithit-instance" {
-  ami            = var.ec2_instance_id
+  ami            = var.ami_id
   instance_type  = local.workspace["instance_type"]
   key_name       = var.key_name
   user_data      = file("../scripts/ec2_docker_setup.sh")

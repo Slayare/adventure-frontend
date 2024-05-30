@@ -24,8 +24,8 @@ variable "key_name" {
   type        = string
 }
 
-variable "ec2_instance_id" {
-  description = "EC2 instance ID"
+variable "ami_id" {
+  description = "EC2 AMI ID"
   type        = string
 }
 
