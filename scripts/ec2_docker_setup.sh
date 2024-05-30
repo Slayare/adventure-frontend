@@ -22,11 +22,11 @@ sudo usermod -a -G docker ec2-user
 echo "Usermod completed with exit code $?"
 
 echo "Pulling Docker image..."
-sudo docker pull ${var.image_tag}
+sudo docker pull ${image_tag}
 echo "Docker pull completed with exit code $?"
 
 echo "Running Docker container..."
-sudo docker run -d --restart unless-stopped -p 80:80 ${var.image_tag}
+sudo docker run -d --restart unless-stopped -p 80:80 ${image_tag}
 echo "Docker run completed with exit code $?"
 
 echo "User data script completed!"

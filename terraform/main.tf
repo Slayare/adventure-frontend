@@ -32,7 +32,7 @@ resource "aws_instance" "rolewithit-instance" {
   ami            = var.ami_id
   instance_type  = local.workspace["instance_type"]
   key_name       = var.key_name
-  user_data      = file("../scripts/ec2_docker_setup.sh")
+  user_data      = base64encode(templatefile("../scripts/ec2_docker_setup.sh", {image_tag = var.image_tag}))
 
   lifecycle {
     create_before_destroy = true
