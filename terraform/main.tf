@@ -28,6 +28,11 @@ provider "aws" {
   }
 }
 
+import {
+  to = aws_instance.rolewithit-instance
+  id = var.ec2_instance_id
+}
+
 resource "aws_instance" "rolewithit-instance" {
   ami            = var.ami_id
   instance_type  = local.workspace["instance_type"]
