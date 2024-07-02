@@ -11,7 +11,7 @@ sudo yum update -y
 echo "Yum update completed with exit code $?"
 
 echo "Installing Docker..."
-sudo amazon-linux-extras install docker -y
+sudo yum amazon-linux-extras install docker -y
 echo "Docker installation completed with exit code $?"
 
 echo "Starting Docker service..."
