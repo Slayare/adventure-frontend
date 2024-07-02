@@ -29,10 +29,11 @@ provider "aws" {
 }
 
 resource "aws_instance" "rolewithit-instance" {
-  ami            = var.ami_id
-  instance_type  = local.workspace["instance_type"]
-  key_name       = var.key_name
-  user_data      = base64encode(templatefile("../scripts/ec2_docker_setup.sh", {image_tag = var.image_tag}))
+  ami                         = var.ami_id
+  instance_type               = local.workspace["instance_type"]
+  key_name                    = var.key_name
+  user_data                   = base64encode(templatefile("../scripts/ec2_docker_setup.sh", {image_tag = var.image_tag}))
+  user_data_replace_on_change = true
 
   lifecycle {
     create_before_destroy = true
