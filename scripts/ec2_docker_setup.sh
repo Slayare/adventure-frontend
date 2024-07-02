@@ -20,6 +20,10 @@ echo "Starting Docker service..."
 sudo service docker start
 echo "Docker service start completed with exit code $?"
 
+echo "Restarting Docker service..."
+sudo service docker restart
+echo "Docker service restarted with exit code $?"
+
 echo "Pulling Docker image..."
 sudo docker pull ${image_tag}
 echo "Docker pull completed with exit code $?"
