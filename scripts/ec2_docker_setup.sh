@@ -14,6 +14,8 @@ echo "Installing Docker..."
 sudo yum install docker -y
 echo "Docker installation completed with exit code $?"
 
+sleep 10
+
 echo "Starting Docker service..."
 sudo service docker start
 echo "Docker service start completed with exit code $?"
