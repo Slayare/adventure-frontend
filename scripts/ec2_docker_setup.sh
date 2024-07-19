@@ -20,6 +20,13 @@ echo "Starting Docker service..."
 sudo service docker start
 echo "Docker service start completed with exit code $?"
 
+echo "Checking for running Docker jobs..."
+sudo systemctl list-unit-files
+sudo systemctl status docker.service
+sudo systemctl status docker.socket
+echo "Running job check complete with exit code $?"
+
+
 echo "Force start Docker service..."
 sudo systemctl start docker.service
 echo "Docker service force ended with exit code $?"
