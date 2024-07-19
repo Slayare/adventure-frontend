@@ -16,12 +16,8 @@ echo "Docker installation completed with exit code $?"
 
 sleep 10
 
-echo "Starting Docker service..."
-sudo service docker start
-echo "Docker service start completed with exit code $?"
-
 echo "Enable Docker service..."
-sudo systemctl enable --now docker.service
+sudo systemctl enable docker.service
 echo "Docker enable status completed with exit code $?"
 
 # echo "Checking for running Docker jobs..."
