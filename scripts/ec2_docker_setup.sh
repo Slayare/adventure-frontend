@@ -20,9 +20,9 @@ echo "Starting Docker service..."
 sudo service docker start
 echo "Docker service start completed with exit code $?"
 
-echo "Restarting Docker service..."
-sudo service docker restart
-echo "Docker service restarted with exit code $?"
+echo "Force start Docker service..."
+sudo systemctl start docker.service
+echo "Docker service force ended with exit code $?"
 
 echo "Pulling Docker image..."
 sudo docker pull ${image_tag}
